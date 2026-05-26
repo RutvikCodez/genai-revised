@@ -1,4 +1,5 @@
 import Hero from "@/components/landingPage/Hero";
+import Stats from "@/components/landingPage/Stats";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 
@@ -9,6 +10,8 @@ export default function Home() {
       <Navbar />
       {/* Hero Section */}
       <Hero />
+      {/* Stats Section */}
+      <Stats />
     </div>
   );
 }
