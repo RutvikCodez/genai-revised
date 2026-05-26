@@ -3,53 +3,75 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import MobileNavbar from "./MobileNavbar";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   return (
-    <nav className="sticky top-0 z-40 border-b border-border/50 bg-background/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-bold text-xl group"
-          >
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/70 backdrop-blur-xl supports-backdrop-filter:bg-background/60">
+      <div className="absolute inset-0 bg-linear-to-b from-muted/20 to-transparent pointer-events-none" />
+
+      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="group flex items-center gap-3 transition-transform duration-300 hover:scale-[1.02]"
+        >
+          <div className="relative overflow-hidden rounded-xl border border-border/60 bg-muted/40 p-1.5 shadow-sm">
             <Image
               width={1000}
               height={1000}
               src="/hirzo-lockup-transparent.png"
-              alt="Logo"
-              className="w-32 h-8"
+              alt="Hirzo Logo"
+              className="h-7 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+              priority
             />
-          </Link>
+          </div>
+        </Link>
 
-          {/* Menu */}
-          <div className="md:flex items-center gap-8 hidden">
-            {navLinks.map(({ href, label }, index) => (
+        {/* Desktop Navigation */}
+        <div className="hidden items-center md:flex">
+          <div className="flex items-center gap-1 rounded-full border border-border/60 bg-muted/30 p-1 backdrop-blur-md">
+            {navLinks.map(({ href, label }) => (
               <Link
-                key={index}
+                key={href}
                 href={href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className={cn(
+                  "relative rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-all duration-300",
+                  "hover:bg-background hover:text-foreground",
+                  "after:absolute after:bottom-1 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:rounded-full after:bg-foreground after:transition-all after:duration-300",
+                  "hover:after:w-5"
+                )}
               >
                 {label}
               </Link>
             ))}
           </div>
+        </div>
 
-          {/* CTA Buttons */}
-          <div className="flex items-center gap-3">
-            <Button asChild variant="outline">
-              <Link href="/signin">Sign In</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/signup">Get Started</Link>
-            </Button>
-            {/* Mobile Menu */}
+        {/* Actions */}
+        <div className="flex items-center gap-2">
+          <Button
+            asChild
+            variant="ghost"
+            className="hidden sm:flex rounded-full px-5 text-sm font-medium"
+          >
+            <Link href="/signin">Sign In</Link>
+          </Button>
+
+          <Button
+            asChild
+            className="rounded-full px-5 shadow-md transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+          >
+            <Link href="/signup">Get Started</Link>
+          </Button>
+
+          {/* Mobile Menu */}
+          <div className="md:hidden">
             <MobileNavbar />
           </div>
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
 
