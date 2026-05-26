@@ -2,6 +2,9 @@ type CounterProps = {
   end: number;
   suffix?: string;
   duration?: number;
+  prefix?: string;
+  decimals?: number;
+  className?: string;
 };
 
 type FeatureCardProps = {
