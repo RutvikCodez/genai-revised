@@ -20,3 +20,14 @@ type TestimonialCardProps = {
   rating?: number;
   className?: string;
 };
+
+type PricingCardProps = {
+  name: string;
+  price: string | number;
+  description: string;
+  features: string[];
+  cta: string;
+  highlighted?: boolean;
+  icon?: ReactNode;
+  className?: string;
+};

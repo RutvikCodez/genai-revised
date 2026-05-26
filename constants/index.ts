@@ -114,3 +114,48 @@ export const testimonials = [
     rating: 5,
   },
 ];
+
+export const pricingPlans = [
+  {
+    name: "Starter",
+    price: "29",
+    description: "Perfect for beginners",
+    features: [
+      "Unlimited practice interviews",
+      "1,000 interview questions",
+      "Basic AI feedback",
+      "Progress tracking",
+      "Email support",
+    ],
+    cta: "Get Started",
+  },
+  {
+    name: "Professional",
+    price: "79",
+    description: "Most popular plan",
+    features: [
+      "Everything in Starter",
+      "10,000+ interview questions",
+      "Advanced AI feedback",
+      "Resume builder",
+      "Personalized coaching",
+      "Priority support",
+    ],
+    cta: "Get Started",
+    highlighted: true,
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    description: "For teams and organizations",
+    features: [
+      "Everything in Professional",
+      "Unlimited team members",
+      "Custom training programs",
+      "Dedicated account manager",
+      "Custom integrations",
+      "24/7 priority support",
+    ],
+    cta: "Contact Sales",
+  },
+];
