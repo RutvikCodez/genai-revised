@@ -1,0 +1,16 @@
+<svg width="520" height="160" viewBox="0 0 520 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon mark -->
+  <rect width="160" height="160" rx="36" fill="url(#grad2)"/>
+  <path d="M44 120V40M44 40L80 40M44 40L44 80M44 80L80 80" stroke="white" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M92 40H118C118 40 132 40 132 58C132 76 118 80 118 80H92M92 80L120 120" stroke="white" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="130" cy="36" r="11" fill="#06B6D4"/>
+  <!-- Wordmark -->
+  <text x="188" y="112" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-weight="700" font-size="80" letter-spacing="-4" fill="white">Hirzo</text>
+  <defs>
+    <linearGradient id="grad2" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5B6AF8"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+</svg>
