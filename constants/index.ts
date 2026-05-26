@@ -93,7 +93,7 @@ export const features = [
 export const testimonials = [
   {
     quote:
-      "I used InterviewIQ to prepare for my Google interview and the AI feedback was incredibly helpful. I got the job!",
+      "I used Hirzo to prepare for my Google interview and the AI feedback was incredibly helpful. I got the job!",
     author: "Sarah Chen",
     role: "Software Engineer",
     company: "Google",
@@ -109,7 +109,7 @@ export const testimonials = [
   },
   {
     quote:
-      "InterviewIQ's resume builder helped me land 3 interviews at FAANG companies. Best investment!",
+      "Hirzo's resume builder helped me land 3 interviews at FAANG companies. Best investment!",
     author: "Priya Patel",
     role: "Data Scientist",
     company: "Amazon",
