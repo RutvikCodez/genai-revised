@@ -1,3 +1,4 @@
+import Features from "@/components/landingPage/Features";
 import Hero from "@/components/landingPage/Hero";
 import Stats from "@/components/landingPage/Stats";
 import Navbar from "@/components/Navbar";
@@ -12,6 +13,8 @@ export default function Home() {
       <Hero />
       {/* Stats Section */}
       <Stats />
+      {/* Features Section */}
+      <Features />
     </div>
   );
 }
