@@ -4,3 +4,11 @@ export const navLinks = [
   { href: "/#faq", label: "FAQ" },
   { href: "/#testimonials", label: "Testimonials" },
 ];
+
+export const trustedCompanies = [
+  "Google",
+  "Amazon",
+  "Microsoft",
+  "Meta",
+  "Apple",
+];
