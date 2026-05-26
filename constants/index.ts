@@ -159,3 +159,22 @@ export const pricingPlans = [
     cta: "Contact Sales",
   },
 ];
+
+export const faqData = [
+  {
+    question: "How accurate is the AI feedback?",
+    answer: "Our AI is trained on thousands of successful interviews and provides feedback comparable to professional coaches.",
+  },
+  {
+    question: "Can I use it for non-tech interviews?",
+    answer: "Yes! InterviewIQ supports interview prep for any industry including consulting, finance, sales, and more.",
+  },
+  {
+    question: "Is there a free trial?",
+    answer: "Yes, you get 7 days free trial with full access to all premium features.",
+  },
+  {
+    question: "How often should I practice?",
+    answer: "We recommend 3-4 practice interviews per week for optimal improvement.",
+  },
+];

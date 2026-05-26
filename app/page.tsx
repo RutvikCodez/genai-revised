@@ -1,3 +1,4 @@
+import FAQ from "@/components/landingPage/FAQ";
 import Features from "@/components/landingPage/Features";
 import Hero from "@/components/landingPage/Hero";
 import Pricing from "@/components/landingPage/Pricing";
@@ -20,6 +21,8 @@ export default function Home() {
       <Testimonials />
       {/* Pricing Section */}
       <Pricing />
+      {/* FAQ Section */}
+      <FAQ />
     </div>
   );
 }
