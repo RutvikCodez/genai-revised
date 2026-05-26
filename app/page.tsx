@@ -1,6 +1,7 @@
 import CTA from "@/components/landingPage/CTA";
 import FAQ from "@/components/landingPage/FAQ";
 import Features from "@/components/landingPage/Features";
+import Footer from "@/components/landingPage/Footer";
 import Hero from "@/components/landingPage/Hero";
 import Pricing from "@/components/landingPage/Pricing";
 import Stats from "@/components/landingPage/Stats";
@@ -26,6 +27,8 @@ export default function Home() {
       <FAQ />
       {/* CTA Section */}
       <CTA />
+      {/* Footer Section */}
+      <Footer />
     </div>
   );
 }

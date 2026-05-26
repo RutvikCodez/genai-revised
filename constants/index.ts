@@ -5,6 +5,8 @@ import {
   Target,
   TrendingUp,
   Zap,
+  X,
+  Mail,
 } from "lucide-react";
 
 export const navLinks = [
@@ -163,18 +165,53 @@ export const pricingPlans = [
 export const faqData = [
   {
     question: "How accurate is the AI feedback?",
-    answer: "Our AI is trained on thousands of successful interviews and provides feedback comparable to professional coaches.",
+    answer:
+      "Our AI is trained on thousands of successful interviews and provides feedback comparable to professional coaches.",
   },
   {
     question: "Can I use it for non-tech interviews?",
-    answer: "Yes! InterviewIQ supports interview prep for any industry including consulting, finance, sales, and more.",
+    answer:
+      "Yes! InterviewIQ supports interview prep for any industry including consulting, finance, sales, and more.",
   },
   {
     question: "Is there a free trial?",
-    answer: "Yes, you get 7 days free trial with full access to all premium features.",
+    answer:
+      "Yes, you get 7 days free trial with full access to all premium features.",
   },
   {
     question: "How often should I practice?",
-    answer: "We recommend 3-4 practice interviews per week for optimal improvement.",
+    answer:
+      "We recommend 3-4 practice interviews per week for optimal improvement.",
   },
+];
+
+export const socialLinks = [
+  { Icon: X, href: "#", label: "Twitter" },
+  { Icon: Mail, href: "#", label: "Email" },
+];
+
+export const footerLinks = {
+    Product: [
+      { label: 'Features', href: '#features' },
+      { label: 'Pricing', href: '#pricing' },
+      { label: 'Templates', href: '/templates' },
+      { label: 'FAQ', href: '#faq' },
+    ],
+    Company: [
+      { label: 'About', href: '#' },
+      { label: 'Blog', href: '#' },
+      { label: 'Careers', href: '#' },
+      { label: 'Contact', href: '#' },
+    ],
+    Legal: [
+      { label: 'Privacy', href: '#' },
+      { label: 'Terms', href: '#' },
+      { label: 'Security', href: '#' },
+    ],
+  }
+
+  export const footerTextLinks = [
+  "Privacy Policy",
+  "Terms of Service",
+  "Cookie Policy",
 ];
