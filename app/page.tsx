@@ -1,8 +1,8 @@
 import Features from "@/components/landingPage/Features";
 import Hero from "@/components/landingPage/Hero";
 import Stats from "@/components/landingPage/Stats";
+import Testimonials from "@/components/landingPage/Testimonials";
 import Navbar from "@/components/Navbar";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -15,6 +15,8 @@ export default function Home() {
       <Stats />
       {/* Features Section */}
       <Features />
+      {/* Testimonials Section */}
+      <Testimonials />
     </div>
   );
 }

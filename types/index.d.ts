@@ -11,3 +11,12 @@ type FeatureCardProps = {
   gradient?: string;
   className?: string;
 };
+
+type TestimonialCardProps = {
+  quote: string;
+  author: string;
+  role: string;
+  company: string;
+  rating?: number;
+  className?: string;
+};

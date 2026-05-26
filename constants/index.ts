@@ -1,4 +1,11 @@
-import { Award, Brain, MessageSquare, Target, TrendingUp, Zap } from "lucide-react";
+import {
+  Award,
+  Brain,
+  MessageSquare,
+  Target,
+  TrendingUp,
+  Zap,
+} from "lucide-react";
 
 export const navLinks = [
   { href: "/#features", label: "Features" },
@@ -78,5 +85,32 @@ export const features = [
     description:
       "Create an ATS-optimized resume with AI suggestions and real-time feedback",
     gradient: "from-orange-400 to-red-600",
+  },
+];
+
+export const testimonials = [
+  {
+    quote:
+      "I used InterviewIQ to prepare for my Google interview and the AI feedback was incredibly helpful. I got the job!",
+    author: "Sarah Chen",
+    role: "Software Engineer",
+    company: "Google",
+    rating: 5,
+  },
+  {
+    quote:
+      "The real-time feedback on my communication skills made all the difference. Highly recommend this tool!",
+    author: "James Rodriguez",
+    role: "Product Manager",
+    company: "Meta",
+    rating: 5,
+  },
+  {
+    quote:
+      "InterviewIQ's resume builder helped me land 3 interviews at FAANG companies. Best investment!",
+    author: "Priya Patel",
+    role: "Data Scientist",
+    company: "Amazon",
+    rating: 5,
   },
 ];
