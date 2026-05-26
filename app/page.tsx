@@ -1,3 +1,4 @@
+import CTA from "@/components/landingPage/CTA";
 import FAQ from "@/components/landingPage/FAQ";
 import Features from "@/components/landingPage/Features";
 import Hero from "@/components/landingPage/Hero";
@@ -23,6 +24,8 @@ export default function Home() {
       <Pricing />
       {/* FAQ Section */}
       <FAQ />
+      {/* CTA Section */}
+      <CTA />
     </div>
   );
 }
