@@ -1,4 +1,7 @@
-import { Check } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Check, Sparkles } from "lucide-react";
+
+import { Button } from "../ui/button";
 import {
   Card,
   CardContent,
@@ -6,8 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
 
 const PricingCard = ({
   name,
@@ -21,45 +22,106 @@ const PricingCard = ({
   return (
     <Card
       className={cn(
-        {
-          "border-cyan-500/50 bg-linear-to-br from-cyan-500/10 to-blue-500/10 shadow-lg shadow-cyan-500/20":
-            highlighted,
-          "border-border/50 bg-muted/30 hover:border-border": !highlighted,
-        },
-        className,
+        "group relative overflow-hidden rounded-3xl border backdrop-blur-xl transition-all duration-500",
+        "hover:-translate-y-3 hover:shadow-2xl",
+        highlighted
+          ? "border-border bg-background/80 shadow-xl"
+          : "border-border/50 bg-background/50 hover:border-border hover:bg-background/80",
+        className
       )}
     >
-      <CardHeader>
-        <CardTitle>{name}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-8">
-        <div className="flex flex-col gap-6">
-          <div className="flex gap-2 items-end">
-            <span className="text-4xl font-bold text-foreground">{price}</span>
-            <span className="text-muted-foreground ">/month</span>
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        {/* Glow */}
+        {highlighted && (
+          <div className="absolute left-1/2 top-0 h-56 w-56 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+        )}
+
+        {/* Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.05)_1px,transparent_1px)] bg-size-[28px_28px]" />
+      </div>
+
+      {/* Popular Badge */}
+      {highlighted && (
+        <div className="absolute right-5 top-5 z-20">
+          <div className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-background/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] backdrop-blur-md">
+            <Sparkles className="h-3 w-3" />
+            Popular
           </div>
+        </div>
+      )}
+
+      <div className="relative z-10 flex h-full flex-col">
+        {/* Header */}
+        <CardHeader className="space-y-5 p-8">
+          <div className="space-y-2">
+            <CardTitle className="text-2xl font-semibold tracking-tight">
+              {name}
+            </CardTitle>
+
+            <CardDescription className="text-base leading-relaxed text-muted-foreground">
+              {description}
+            </CardDescription>
+          </div>
+
+          {/* Pricing */}
+          <div className="flex items-end gap-2">
+            <span className="text-5xl font-bold tracking-tight">
+              {price}
+            </span>
+
+            <span className="pb-1 text-sm text-muted-foreground">
+              / month
+            </span>
+          </div>
+        </CardHeader>
+
+        {/* Content */}
+        <CardContent className="flex flex-1 flex-col justify-between gap-8 px-8 pb-8">
+          {/* CTA */}
           <Button
-            variant={"outline"}
-            className={cn({
-              "bg-linear-to-r from-cyan-400 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/30":
-                highlighted,
-              "border border-border text-foreground hover:bg-muted":
-                !highlighted,
-            })}
+            variant={highlighted ? "default" : "outline"}
+            className={cn(
+              "h-12 rounded-xl text-sm font-semibold transition-all duration-300",
+              highlighted
+                ? "shadow-lg hover:scale-[1.02]"
+                : "border-border/60 bg-background/60 backdrop-blur-md hover:bg-muted"
+            )}
           >
             {cta}
           </Button>
-        </div>
-        <div className="flex flex-col gap-3">
-          {features.map((feature, index) => (
-            <div key={index} className="flex items-center gap-3">
-              <Check className="size-5 text-green-500 shrink-0" />
-              <span className="text-sm text-muted-foreground">{feature}</span>
-            </div>
-          ))}
-        </div>
-      </CardContent>
+
+          {/* Features */}
+          <div className="flex flex-col gap-4">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-3"
+              >
+                {/* Icon */}
+                <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border/50 bg-background/70 backdrop-blur-sm">
+                  <Check className="h-3.5 w-3.5" />
+                </div>
+
+                {/* Text */}
+                <span className="text-sm leading-relaxed text-muted-foreground">
+                  {feature}
+                </span>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+
+        {/* Bottom Accent */}
+        <div
+          className={cn(
+            "h-1 w-full transition-all duration-500",
+            highlighted
+              ? "bg-primary"
+              : "bg-border group-hover:bg-muted-foreground/30"
+          )}
+        />
+      </div>
     </Card>
   );
 };
