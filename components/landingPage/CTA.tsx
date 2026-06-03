@@ -1,7 +1,3 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-
-import { Button } from "../ui/button";
 import SectionWrapper from "./SectionWrapper";
 import { shortFeatures } from "@/constants";
 import AppButton from "./AppButton";

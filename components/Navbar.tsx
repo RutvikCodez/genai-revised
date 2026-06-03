@@ -1,7 +1,6 @@
 import { navLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
 import MobileNavbar from "./MobileNavbar";
 import { cn } from "@/lib/utils";
 import AppButton from "./landingPage/AppButton";

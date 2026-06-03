@@ -1,7 +1,5 @@
 import { cn } from "@/lib/utils";
 import { Check, Sparkles } from "lucide-react";
-
-import { Button } from "../ui/button";
 import {
   Card,
   CardContent,

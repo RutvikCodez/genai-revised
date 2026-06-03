@@ -1,9 +1,5 @@
-import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
-
+import { Sparkles } from "lucide-react";
 import { trustedCompanies } from "@/constants";
-
-import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import AppButton from "./AppButton";
 
