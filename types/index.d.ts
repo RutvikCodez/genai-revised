@@ -34,3 +34,12 @@ type PricingCardProps = {
   icon?: ReactNode;
   className?: string;
 };
+
+type SectionWrapperProps = {
+  id: string;
+  tagline: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  children?: ReactNode; 
+}
