@@ -239,3 +239,5 @@ export const buttonStyles = {
   pricing:
     "h-12 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg hover:scale-[1.02]",
 };
+
+export const trustPoints = ["Secure", "Fast", "AI Powered"];
