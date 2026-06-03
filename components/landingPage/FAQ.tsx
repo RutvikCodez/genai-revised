@@ -20,19 +20,17 @@ const FAQ = () => {
 
       <div className="mx-auto flex max-w-5xl flex-col gap-20 px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-3xl text-center flex flex-col gap-6 justify-center items-center">
           <span className="inline-flex items-center rounded-full border border-border/60 bg-background/60 px-4 py-2 text-sm font-medium backdrop-blur-md">
             Support & Answers
           </span>
 
-          <h2 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
             Frequently Asked
-            <span className="block text-muted-foreground">
-              Questions
-            </span>
+            <span className="block text-muted-foreground">Questions</span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Everything you need to know about Hirzo, interview preparation,
             plans, and AI-powered coaching.
           </p>

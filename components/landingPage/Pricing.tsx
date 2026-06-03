@@ -21,19 +21,19 @@ const Pricing = () => {
 
       <div className="mx-auto flex max-w-7xl flex-col gap-20 px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-3xl text-center flex flex-col gap-6 justify-center items-center">
           <span className="inline-flex items-center rounded-full border border-border/60 bg-background/60 px-4 py-2 text-sm font-medium backdrop-blur-md">
             Flexible Pricing
           </span>
 
-          <h2 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
             Simple Pricing,
             <span className="block text-muted-foreground">
               Powerful Results
             </span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Whether you are preparing for your first interview or aiming for
             top-tier companies, Hirzo has a plan tailored for your journey.
           </p>

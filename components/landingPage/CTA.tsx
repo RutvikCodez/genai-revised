@@ -28,29 +28,33 @@ const CTA = () => {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.05)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.05)_1px,transparent_1px)] bg-size-[32px_32px]" />
 
           {/* Content */}
-          <div className="relative z-10 flex flex-col items-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/70 px-4 py-2 text-sm font-medium backdrop-blur-md">
-              <Sparkles className="h-4 w-4" />
-              Start Your Career Journey
+          <div className="relative z-10 items-center flex flex-col gap-10">
+            <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="flex flex-col gap-8 justify-center items-center">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/70 px-4 py-2 text-sm font-medium backdrop-blur-md">
+                  <Sparkles className="h-4 w-4" />
+                  Start Your Career Journey
+                </div>
+
+                {/* Heading */}
+                <h2 className="max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                  Ready to Master
+                  <span className="block text-muted-foreground">
+                    Your Interviews?
+                  </span>
+                </h2>
+              </div>
+
+              {/* Description */}
+              <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+                Join thousands of candidates using Hirzo to practice smarter,
+                gain confidence, and land opportunities at top companies.
+              </p>
             </div>
 
-            {/* Heading */}
-            <h2 className="mt-8 max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Ready to Master
-              <span className="block text-muted-foreground">
-                Your Interviews?
-              </span>
-            </h2>
-
-            {/* Description */}
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Join thousands of candidates using Hirzo to practice smarter,
-              gain confidence, and land opportunities at top companies.
-            </p>
-
             {/* CTA Buttons */}
-            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+            <div className="flex flex-col items-center gap-4 sm:flex-row">
               <Button
                 asChild
                 size="lg"
@@ -73,7 +77,7 @@ const CTA = () => {
             </div>
 
             {/* Bottom Trust */}
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
               <span>✓ No Credit Card Required</span>
               <span>✓ AI-Powered Coaching</span>
               <span>✓ Cancel Anytime</span>

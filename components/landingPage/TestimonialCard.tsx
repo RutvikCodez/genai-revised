@@ -72,7 +72,7 @@ const TestimonialCard = ({
           <div className="absolute left-8 top-0 h-px w-12 bg-border transition-all duration-500 group-hover:w-24" />
 
           {/* Author */}
-          <div className="space-y-1">
+          <div className="flex flex-col gap-1">
             <CardTitle className="text-lg font-semibold tracking-tight">
               {author}
             </CardTitle>

@@ -47,7 +47,7 @@ const FeatureCard = ({
         </div>
 
         {/* Text */}
-        <div className="space-y-3">
+        <div className="flex flex-col gap-3">
           <CardTitle className="text-2xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-foreground">
             {title}
           </CardTitle>

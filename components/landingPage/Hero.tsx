@@ -20,56 +20,61 @@ const Hero = () => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.15)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.15)_1px,transparent_1px)] bg-size-[60px_60px]" />
       </div>
 
-      <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-4 py-28 text-center sm:px-6 lg:px-8">
-        {/* Badge */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/70 px-4 py-2 backdrop-blur-xl">
-          <Sparkles className="h-4 w-4" />
-          <span className="text-sm font-medium">
-            AI-Powered Interview Preparation
-          </span>
-        </div>
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-4 py-28 text-center sm:px-6 lg:px-8 gap-20">
+        <div className="flex flex-col gap-10 items-center justify-center">
+          <div className="flex flex-col gap-8 w-full items-center justify-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/70 px-4 py-2 backdrop-blur-xl">
+              <Sparkles className="h-4 w-4" />
+              <span className="text-sm font-medium">
+                AI-Powered Interview Preparation
+              </span>
+            </div>
 
-        {/* Heading */}
-        <div className="max-w-5xl space-y-6">
-          <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
-            Crack Your Dream
-            <br />
-            <span className="text-muted-foreground">
-              Interviews with AI
-            </span>
-          </h1>
+            {/* Heading */}
+            <div className="max-w-5xl flex flex-col gap-6">
+              <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+                Crack Your Dream
+                <br />
+                <span className="text-muted-foreground">
+                  Interviews with AI
+                </span>
+              </h1>
 
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
-            Practice with realistic AI interviews, receive detailed feedback,
-            improve communication skills, and become job-ready faster than ever.
-          </p>
-        </div>
+              <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
+                Practice with realistic AI interviews, receive detailed
+                feedback, improve communication skills, and become job-ready
+                faster than ever.
+              </p>
+            </div>
+          </div>
 
-        {/* CTA */}
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-          <Button
-            asChild
-            size="lg"
-            className="group h-12 rounded-full px-8 text-sm font-semibold shadow-lg transition-all duration-300 hover:scale-[1.03]"
-          >
-            <Link href="/signup">
-              Start Free Trial
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </Button>
+          {/* CTA */}
+          <div className="flex flex-col items-center gap-4 sm:flex-row">
+            <Button
+              asChild
+              size="lg"
+              className="group h-12 rounded-full px-8 text-sm font-semibold shadow-lg transition-all duration-300 hover:scale-[1.03]"
+            >
+              <Link href="/signup">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </Button>
 
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="h-12 rounded-full border-border/60 bg-background/60 px-8 text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:bg-muted"
-          >
-            <Link href="/#features">Explore Features</Link>
-          </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="h-12 rounded-full border-border/60 bg-background/60 px-8 text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:bg-muted"
+            >
+              <Link href="/#features">Explore Features</Link>
+            </Button>
+          </div>
         </div>
 
         {/* Social Proof */}
-        <div className="mt-20 w-full max-w-4xl rounded-3xl border border-border/50 bg-background/40 p-8 backdrop-blur-xl">
+        <div className="w-full max-w-4xl rounded-3xl border border-border/50 bg-background/40 p-8 backdrop-blur-xl">
           <div className="flex flex-col items-center gap-6">
             <p className="text-sm font-medium text-muted-foreground">
               Trusted by candidates preparing for interviews at

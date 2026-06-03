@@ -53,8 +53,8 @@ const PricingCard = ({
 
       <div className="relative z-10 flex h-full flex-col">
         {/* Header */}
-        <CardHeader className="space-y-5 p-8">
-          <div className="space-y-2">
+        <CardHeader className="flex flex-col gap-5 p-8">
+          <div className="flex flex-col gap-2">
             <CardTitle className="text-2xl font-semibold tracking-tight">
               {name}
             </CardTitle>
@@ -70,7 +70,7 @@ const PricingCard = ({
               {price}
             </span>
 
-            <span className="pb-1 text-sm text-muted-foreground">
+            <span className="text-sm text-muted-foreground">
               / month
             </span>
           </div>

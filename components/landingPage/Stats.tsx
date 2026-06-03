@@ -14,18 +14,20 @@ const Stats = () => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.08)_1px,transparent_1px)] bg-size-[50px_50px]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
         {/* Section Heading */}
-        <div className="mx-auto mb-16 max-w-2xl text-center">
-          <span className="inline-flex items-center rounded-full border border-border/60 bg-background/60 px-4 py-2 text-sm font-medium backdrop-blur-md">
-            Trusted Performance
-          </span>
+        <div className="mx-auto max-w-2xl text-center flex flex-col gap-4">
+          <div className="flex flex-col gap-6 items-center justify-center">
+            <span className="inline-flex items-center rounded-full border border-border/60 bg-background/60 px-4 py-2 text-sm font-medium backdrop-blur-md">
+              Trusted Performance
+            </span>
 
-          <h2 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">
-            Numbers That Speak
-          </h2>
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              Numbers That Speak
+            </h2>
+          </div>
 
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
             Thousands of candidates trust Hirzo to sharpen their interview
             skills and land better opportunities.
           </p>
@@ -43,14 +45,14 @@ const Stats = () => {
                 <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent" />
               </div>
 
-              <div className="relative flex flex-col items-center text-center">
+              <div className="relative flex flex-col items-center text-center gap-4">
                 <div className="text-5xl font-bold tracking-tight sm:text-6xl">
                   <Counter end={end} duration={2} suffix={suffix} />
                 </div>
 
-                <div className="mt-4 h-px w-12 bg-border transition-all duration-300 group-hover:w-20" />
+                <div className="h-px w-12 bg-border transition-all duration-300 group-hover:w-20" />
 
-                <p className="mt-4 text-sm font-medium text-muted-foreground sm:text-base">
+                <p className="text-sm font-medium text-muted-foreground sm:text-base">
                   {label}
                 </p>
               </div>

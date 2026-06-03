@@ -11,7 +11,6 @@ const Navbar = () => {
       <div className="absolute inset-0 bg-linear-to-b from-muted/20 to-transparent pointer-events-none" />
 
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
         <Link
           href="/"
           className="group flex items-center gap-3 transition-transform duration-300 hover:scale-[1.02]"

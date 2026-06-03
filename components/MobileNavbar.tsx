@@ -31,17 +31,17 @@ const MobileNavbar = () => {
       </DrawerTrigger>
 
       {/* Drawer */}
-      <DrawerContent className="ml-auto h-screen w-[85%] max-w-sm border-l border-border/50 bg-background/95 backdrop-blur-2xl">
+      <DrawerContent className="ml-auto h-screen max-w-sm border-l border-border/50 bg-background/95 backdrop-blur-2xl">
         <div className="flex h-full flex-col">
           {/* Top */}
           <DrawerHeader className="border-b border-border/50 px-6 py-5 text-left">
             <div className="flex items-center justify-between">
-              <div>
+              <div className="flex flex-col gap-1">
                 <DrawerTitle className="text-2xl font-bold tracking-tight">
                   Hirzo
                 </DrawerTitle>
 
-                <DrawerDescription className="mt-1 text-sm text-muted-foreground">
+                <DrawerDescription className="text-sm text-muted-foreground">
                   Hire Ready. Always.
                 </DrawerDescription>
               </div>
@@ -76,7 +76,7 @@ const MobileNavbar = () => {
             </div>
 
             {/* CTA */}
-            <div className="mt-auto space-y-3 border-t border-border/50 pt-6">
+            <div className="mt-auto flex flex-col gap-3 border-t border-border/50 pt-6">
               <Button
                 asChild
                 variant="outline"
