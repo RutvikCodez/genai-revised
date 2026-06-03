@@ -15,6 +15,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "./ui/drawer";
+import AppButton from "./landingPage/AppButton";
 
 const MobileNavbar = () => {
   return (
@@ -47,11 +48,7 @@ const MobileNavbar = () => {
               </div>
 
               <DrawerClose asChild>
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="rounded-full"
-                >
+                <Button size="icon" variant="ghost" className="rounded-full">
                   ✕
                 </Button>
               </DrawerClose>
@@ -77,20 +74,13 @@ const MobileNavbar = () => {
 
             {/* CTA */}
             <div className="mt-auto flex flex-col gap-3 border-t border-border/50 pt-6">
-              <Button
-                asChild
-                variant="outline"
-                className="h-11 w-full rounded-xl"
-              >
-                <Link href="/signin">Sign In</Link>
-              </Button>
+              <AppButton href="/signin" variant="outline">
+                Sign In
+              </AppButton>
 
-              <Button
-                asChild
-                className="h-11 w-full rounded-xl shadow-md transition-all duration-300 hover:scale-[1.02]"
-              >
-                <Link href="/signup">Get Started</Link>
-              </Button>
+              <AppButton href="/signup" size="lg" className="rounded-xl h-11">
+                Get Started
+              </AppButton>
             </div>
           </div>
         </div>

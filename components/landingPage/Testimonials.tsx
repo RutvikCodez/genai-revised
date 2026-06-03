@@ -2,6 +2,7 @@ import { testimonials } from "@/constants";
 
 import TestimonialCard from "./TestimonialCard";
 import SectionWrapper from "./SectionWrapper";
+import TrustLine from "./TrustLine";
 
 const Testimonials = () => {
   return (
@@ -39,17 +40,10 @@ const Testimonials = () => {
       </div>
 
       {/* Bottom Trust Line */}
-      <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-3xl border border-border/50 bg-background/50 px-8 py-8 text-center backdrop-blur-xl">
-        <h3 className="text-2xl font-semibold tracking-tight">
-          Join Thousands Preparing Smarter
-        </h3>
-
-        <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-          From fresh graduates to experienced professionals, Hirzo helps
-          candidates prepare with confidence using AI-powered interview
-          coaching.
-        </p>
-      </div>
+      <TrustLine
+        title="Join Thousands Preparing Smarter"
+        description="From fresh graduates to experienced professionals, Hirzo helps candidates prepare with confidence using AI-powered interview coaching."
+      />
     </SectionWrapper>
   );
 };

@@ -191,27 +191,51 @@ export const socialLinks = [
 ];
 
 export const footerLinks = {
-    Product: [
-      { label: 'Features', href: '#features' },
-      { label: 'Pricing', href: '#pricing' },
-      { label: 'Templates', href: '/templates' },
-      { label: 'FAQ', href: '#faq' },
-    ],
-    Company: [
-      { label: 'About', href: '#' },
-      { label: 'Blog', href: '#' },
-      { label: 'Careers', href: '#' },
-      { label: 'Contact', href: '#' },
-    ],
-    Legal: [
-      { label: 'Privacy', href: '#' },
-      { label: 'Terms', href: '#' },
-      { label: 'Security', href: '#' },
-    ],
-  }
+  Product: [
+    { label: "Features", href: "#features" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Templates", href: "/templates" },
+    { label: "FAQ", href: "#faq" },
+  ],
+  Company: [
+    { label: "About", href: "#" },
+    { label: "Blog", href: "#" },
+    { label: "Careers", href: "#" },
+    { label: "Contact", href: "#" },
+  ],
+  Legal: [
+    { label: "Privacy", href: "#" },
+    { label: "Terms", href: "#" },
+    { label: "Security", href: "#" },
+  ],
+};
 
-  export const footerTextLinks = [
+export const footerTextLinks = [
   "Privacy Policy",
   "Terms of Service",
   "Cookie Policy",
 ];
+
+export const shortFeatures = [
+  "No Credit Card Required",
+  "AI-Powered Coaching",
+  "Cancel Anytime",
+];
+
+export const buttonStyles = {
+  primary:
+    "rounded-full px-5 shadow-md transition-all duration-300 hover:scale-[1.03] hover:shadow-lg",
+
+  secondary:
+    "rounded-full border-border/60 bg-background/60 backdrop-blur-md hover:bg-muted",
+
+  ghost: "rounded-full px-5 text-sm font-medium",
+
+  outline:
+    "h-11 w-full rounded-xl border-border/60 bg-background/60 backdrop-blur-md hover:bg-muted",
+
+  cta: "group h-12 rounded-full px-8 text-sm font-semibold shadow-xl transition-all duration-300 hover:scale-[1.03]",
+
+  pricing:
+    "h-12 rounded-xl text-sm font-semibold transition-all duration-300 shadow-lg hover:scale-[1.02]",
+};

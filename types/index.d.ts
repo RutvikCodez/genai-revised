@@ -41,5 +41,26 @@ type SectionWrapperProps = {
   title: string;
   subtitle: string;
   description: string;
-  children?: ReactNode; 
+  children: ReactNode; 
+  sparkles?: boolean;
 }
+
+type TrustLineProps = {
+  title: string;
+  description: string;
+}
+
+type AppButtonProps = {
+  href: string;
+  children: React.ReactNode;
+  variant?:
+    | "primary"
+    | "secondary"
+    | "ghost"
+    | "outline"
+    | "cta"
+    | "pricing";
+  size?: "default" | "lg";
+  className?: string;
+  arrow?: boolean;
+};

@@ -4,6 +4,8 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { trustedCompanies } from "@/constants";
 
 import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
+import AppButton from "./AppButton";
 
 const Hero = () => {
   return (
@@ -24,12 +26,13 @@ const Hero = () => {
         <div className="flex flex-col gap-10 items-center justify-center">
           <div className="flex flex-col gap-8 w-full items-center justify-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/70 px-4 py-2 backdrop-blur-xl">
+            <Badge
+              variant={"outline"}
+              className="p-4 text-sm font-medium flex gap-2 items-center"
+            >
               <Sparkles className="h-4 w-4" />
-              <span className="text-sm font-medium">
-                AI-Powered Interview Preparation
-              </span>
-            </div>
+              AI-Powered Interview Preparation
+            </Badge>
 
             {/* Heading */}
             <div className="max-w-5xl flex flex-col gap-6">
@@ -51,25 +54,18 @@ const Hero = () => {
 
           {/* CTA */}
           <div className="flex flex-col items-center gap-4 sm:flex-row">
-            <Button
-              asChild
-              size="lg"
-              className="group h-12 rounded-full px-8 text-sm font-semibold shadow-lg transition-all duration-300 hover:scale-[1.03]"
-            >
-              <Link href="/signup">
-                Start Free Trial
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </Button>
+            <AppButton href="/signup" variant="cta" size="lg" arrow>
+              Start Free Trial
+            </AppButton>
 
-            <Button
-              asChild
-              variant="outline"
+            <AppButton
+              href="/#features"
+              variant="secondary"
               size="lg"
-              className="h-12 rounded-full border-border/60 bg-background/60 px-8 text-sm font-semibold backdrop-blur-md transition-all duration-300 hover:bg-muted"
+              className="h-12 px-8"
             >
-              <Link href="/#features">Explore Features</Link>
-            </Button>
+              Explore Features
+            </AppButton>
           </div>
         </div>
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import MobileNavbar from "./MobileNavbar";
 import { cn } from "@/lib/utils";
+import AppButton from "./landingPage/AppButton";
 
 const Navbar = () => {
   return (
@@ -38,7 +39,7 @@ const Navbar = () => {
                   "relative rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-all duration-300",
                   "hover:bg-background hover:text-foreground",
                   "after:absolute after:bottom-1 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:rounded-full after:bg-foreground after:transition-all after:duration-300",
-                  "hover:after:w-5"
+                  "hover:after:w-5",
                 )}
               >
                 {label}
@@ -49,20 +50,11 @@ const Navbar = () => {
 
         {/* Actions */}
         <div className="flex items-center gap-2">
-          <Button
-            asChild
-            variant="ghost"
-            className="hidden sm:flex rounded-full px-5 text-sm font-medium"
-          >
-            <Link href="/signin">Sign In</Link>
-          </Button>
+          <AppButton href="/signin" variant="ghost" className="max-md:hidden">
+            Sign In
+          </AppButton>
 
-          <Button
-            asChild
-            className="rounded-full px-5 shadow-md transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
-          >
-            <Link href="/signup">Get Started</Link>
-          </Button>
+          <AppButton href="/signup">Get Started</AppButton>
 
           {/* Mobile Menu */}
           <div className="md:hidden">

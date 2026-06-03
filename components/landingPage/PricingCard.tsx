@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import AppButton from "./AppButton";
 
 const PricingCard = ({
   name,
@@ -27,7 +28,7 @@ const PricingCard = ({
         highlighted
           ? "border-border bg-background/80 shadow-xl"
           : "border-border/50 bg-background/50 hover:border-border hover:bg-background/80",
-        className
+        className,
       )}
     >
       {/* Background Effects */}
@@ -66,38 +67,32 @@ const PricingCard = ({
 
           {/* Pricing */}
           <div className="flex items-end gap-2">
-            <span className="text-5xl font-bold tracking-tight">
-              {price}
-            </span>
+            <span className="text-5xl font-bold tracking-tight">{price}</span>
 
-            <span className="text-sm text-muted-foreground">
-              / month
-            </span>
+            <span className="text-sm text-muted-foreground">/ month</span>
           </div>
         </CardHeader>
 
         {/* Content */}
         <CardContent className="flex flex-1 flex-col justify-between gap-8 px-8 pb-8">
           {/* CTA */}
-          <Button
-            variant={highlighted ? "default" : "outline"}
+          <AppButton
+            href="/signup"
+            variant="pricing"
             className={cn(
               "h-12 rounded-xl text-sm font-semibold transition-all duration-300",
               highlighted
                 ? "shadow-lg hover:scale-[1.02]"
-                : "border-border/60 bg-background/60 backdrop-blur-md hover:bg-muted"
+                : "border-border/60 bg-background/60 backdrop-blur-md hover:bg-muted",
             )}
           >
             {cta}
-          </Button>
+          </AppButton>
 
           {/* Features */}
           <div className="flex flex-col gap-4">
             {features.map((feature, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-3"
-              >
+              <div key={index} className="flex items-start gap-3">
                 {/* Icon */}
                 <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border/50 bg-background/70 backdrop-blur-sm">
                   <Check className="h-3.5 w-3.5" />
@@ -118,7 +113,7 @@ const PricingCard = ({
             "h-1 w-full transition-all duration-500",
             highlighted
               ? "bg-primary"
-              : "bg-border group-hover:bg-muted-foreground/30"
+              : "bg-border group-hover:bg-muted-foreground/30",
           )}
         />
       </div>
