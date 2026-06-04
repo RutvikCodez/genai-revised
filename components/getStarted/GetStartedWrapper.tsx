@@ -28,26 +28,27 @@ const GetStartedWrapper = ({
 
       <div className="relative grid items-center gap-10 p-8 md:grid-cols-2 md:p-10">
         {/* Left Content */}
-        <CardHeader className="space-y-6 p-0">
-          <div className="flex items-center gap-2">
-            <Badge className="flex items-center gap-1 px-3 py-1 text-xs font-medium">
-              <Sparkles className="h-3.5 w-3.5" />
-              {tagline}
-            </Badge>
+        <CardHeader className=" flex flex-col gap-8 p-0">
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center gap-2">
+              <Badge className="flex items-center gap-1 px-3 py-1 text-xs font-medium" variant={"outline"}>
+                <Sparkles className="h-3.5 w-3.5" />
+                {tagline}
+              </Badge>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <CardTitle className="text-3xl font-bold tracking-tight md:text-4xl">
+                {title}
+              </CardTitle>
+
+              <CardDescription className="text-base leading-relaxed text-muted-foreground">
+                {description}
+              </CardDescription>
+            </div>
           </div>
-
-          <div className="space-y-3">
-            <CardTitle className="text-3xl font-bold tracking-tight md:text-4xl">
-              {title}
-            </CardTitle>
-
-            <CardDescription className="text-base leading-relaxed text-muted-foreground">
-              {description}
-            </CardDescription>
-          </div>
-
           {/* Actions */}
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+          <div className="flex flex-col gap-3 sm:flex-row">
             <Button
               className="group h-11 rounded-xl text-sm font-semibold"
               onClick={() => {

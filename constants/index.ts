@@ -244,23 +244,24 @@ export const trustPoints = ["Secure", "Fast", "AI Powered"];
 
 export const getStartedSteps = [
   {
-    title: "Welcome to Interview Prep",
-    description: "Get started with our AI-powered interview preparation tools.",
+    title: "Your Dream Job Starts Here",
+    description:
+      "Step into AI-simulated interviews that mirror real hiring rooms. Build the confidence to walk in prepared — and walk out with an offer.",
     imageUrl: "/interview-prep.jpg",
     tagline: "AI-Powered Interview Preparation",
   },
   {
-    title: "Personalized Coaching",
+    title: "A Coach That Knows You",
     description:
-      "Get customized interview strategies based on your skills and target roles.",
+      "Hirzo adapts to your unique skill set and target role — delivering laser-focused strategies that turn your weaknesses into winning answers.",
     imageUrl: "/personalized-coaching.jpg",
-    tagline: "Personalized Coaching",
+    tagline: "Hyper-Personalized Coaching",
   },
   {
-    title: "Real-Time Feedback",
+    title: "Feedback That Actually Moves the Needle",
     description:
-      "Receive instant, detailed feedback on your interview performance.",
+      "Get instant, brutally honest analysis of every answer — from clarity and confidence to technical depth — so every session makes you sharper.",
     imageUrl: "/real-time-feedback.jpg",
-    tagline: "Real-Time Feedback",
+    tagline: "Real-Time Performance Feedback",
   },
 ];
