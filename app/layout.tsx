@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import {Outfit } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
+import WizardFormProvider from "./context/WizardFormContext";
 
 const fontSans = Outfit({
   subsets: ["latin"],
@@ -18,11 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${fontSans.variable} h-full antialiased dark`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${fontSans.variable} h-full antialiased dark`}>
+      <body className="min-h-full flex flex-col">
+        <WizardFormProvider>{children}</WizardFormProvider>
+      </body>
     </html>
   );
 }

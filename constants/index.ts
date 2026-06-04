@@ -241,3 +241,26 @@ export const buttonStyles = {
 };
 
 export const trustPoints = ["Secure", "Fast", "AI Powered"];
+
+export const getStartedSteps = [
+  {
+    title: "Welcome to Interview Prep",
+    description: "Get started with our AI-powered interview preparation tools.",
+    imageUrl: "/interview-prep.jpg",
+    tagline: "AI-Powered Interview Preparation",
+  },
+  {
+    title: "Personalized Coaching",
+    description:
+      "Get customized interview strategies based on your skills and target roles.",
+    imageUrl: "/personalized-coaching.jpg",
+    tagline: "Personalized Coaching",
+  },
+  {
+    title: "Real-Time Feedback",
+    description:
+      "Receive instant, detailed feedback on your interview performance.",
+    imageUrl: "/real-time-feedback.jpg",
+    tagline: "Real-Time Feedback",
+  },
+];
