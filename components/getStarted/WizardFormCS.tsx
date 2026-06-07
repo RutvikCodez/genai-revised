@@ -1,13 +1,12 @@
-"use client";
 import Test from "./Test";
 import { WizardFormPage } from "./WizardFormPage";
-import GetStartedWrapper from "./GetStartedWrapper";
 import { getStartedSteps } from "@/constants";
+import InformationCardWrapper from "./InformationCardWrapper";
 
 const WizardFormCS = () => {
   const steps: WizardSteps[] = [
     ...getStartedSteps.map((step) => ({
-      element: <GetStartedWrapper {...step} />,
+      element: <InformationCardWrapper {...step} />,
     })),
 
     {

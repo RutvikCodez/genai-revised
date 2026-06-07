@@ -1,3 +1,4 @@
+"use client";
 import { useWizardFormContext } from "@/app/context/WizardFormContext";
 import WizardForm from "./WizardForm";
 
