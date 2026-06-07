@@ -8,6 +8,7 @@ import {
   X,
   Mail,
 } from "lucide-react";
+import z from "zod";
 
 export const navLinks = [
   { href: "/#features", label: "Features" },
@@ -264,4 +265,51 @@ export const getStartedSteps = [
     imageUrl: "/real-time-feedback.jpg",
     tagline: "Real-Time Performance Feedback",
   },
+];
+
+export const perosnalInfomrationFormSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+});
+
+export const contactInformationFormSchema = z.object({
+  email: z.string().trim().email("Please enter a valid email address"),
+
+  phone: z
+    .string()
+    .trim()
+    .regex(/^[0-9+\-\s()]{10,15}$/, "Please enter a valid phone number"),
+
+  addressLine1: z
+    .string()
+    .trim()
+    .min(5, "Address Line 1 must be at least 5 characters"),
+
+  addressLine2: z.string().trim().optional(),
+
+  city: z.string().trim().min(2, "City is required"),
+
+  state: z.string().trim().min(2, "State is required"),
+
+  country: z.string().trim().min(2, "Country is required"),
+
+  postalCode: z
+    .string()
+    .trim()
+    .min(3, "Postal code is required")
+    .max(10, "Postal code is too long"),
+});
+
+export const contactFields: AdressFieldsType[] = [
+  { name: "email", label: "Email Address", type: "email" },
+  { name: "phone", label: "Phone Number", type: "tel" },
+];
+
+export const addressFields: AdressFieldsType[] = [
+  { name: "addressLine1", label: "Address Line 1", type: "text" },
+  { name: "addressLine2", label: "Address Line 2", type: "text" },
+  { name: "city", label: "City", type: "text" },
+  { name: "state", label: "State", type: "text" },
+  { name: "country", label: "Country", type: "text" },
+  { name: "postalCode", label: "Postal Code", type: "text" },
 ];
