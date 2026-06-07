@@ -1,3 +1,4 @@
+"use client"
 import { memo } from "react";
 import { Controller, FieldValues } from "react-hook-form";
 

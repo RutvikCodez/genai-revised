@@ -1,58 +1,39 @@
 "use client";
-
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { GraduationCap } from "lucide-react";
-
 import { useWizardFormContext } from "@/app/context/WizardFormContext";
-
 import {
   defaultEducation,
   educationHistoryFormSchema,
   educationInputFields,
 } from "@/constants";
-
 import { FormStepLayout } from "./FormStepLayout";
 import { FormFieldArray } from "./FormFieldArray";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 import { FormSection } from "./FormSection";
 import { FieldArrayCard } from "./FieldArrayCard";
+import { useWizardStep } from "./useWizardStepForm";
 
 const EducationHistory = () => {
-  const { prevStep, setData, data } = useWizardFormContext();
+  const { data } = useWizardFormContext();
 
-  const form = useForm<z.infer<typeof educationHistoryFormSchema>>({
-    resolver: zodResolver(educationHistoryFormSchema),
-    mode: "onTouched",
+  const { form, onSubmit, prevStep, isSubmitting } = useWizardStep({
+    schema: educationHistoryFormSchema,
     defaultValues: {
       education: data?.education?.length ? data.education : [defaultEducation],
     },
+    advance: false,
+    onAfterSubmit: async (values) => {
+      console.log(values);
+    },
   });
-
-  const {
-    handleSubmit,
-    formState: { isSubmitting },
-  } = form;
-
-  const onSubmit = async (
-    values: z.infer<typeof educationHistoryFormSchema>,
-  ) => {
-    setData((prev) => ({
-      ...prev,
-      ...values,
-    }));
-
-    // Final submit logic
-  };
 
   return (
     <FormStepLayout
       icon={GraduationCap}
       title="Education History"
       submitLabel={isSubmitting ? "Submitting..." : "Complete Profile"}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
       onBack={prevStep}
     >
       {/* Intro */}
@@ -87,7 +68,6 @@ const EducationHistory = () => {
           </FieldArrayCard>
         )}
       />
-
     </FormStepLayout>
   );
 };

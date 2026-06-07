@@ -1,29 +1,22 @@
 "use client";
-
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { SquareUserRound } from "lucide-react";
-
 import { useWizardFormContext } from "@/app/context/WizardFormContext";
-
 import { FormStepLayout } from "./FormStepLayout";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
-
 import {
   addressFields,
   contactFields,
   contactInformationFormSchema,
 } from "@/constants";
 import { FormSection } from "./FormSection";
+import { useWizardStep } from "./useWizardStepForm";
 
 const ContactInformation = () => {
-  const { nextStep, prevStep, setData, data } = useWizardFormContext();
+  const { data } = useWizardFormContext();
 
-  const form = useForm<z.infer<typeof contactInformationFormSchema>>({
-    resolver: zodResolver(contactInformationFormSchema),
-    mode: "onTouched",
+  const { form, onSubmit, prevStep, isSubmitting } = useWizardStep({
+    schema: contactInformationFormSchema,
     defaultValues: {
       email: data?.email ?? "",
       phone: data?.phone ?? "",
@@ -36,28 +29,12 @@ const ContactInformation = () => {
     },
   });
 
-  const {
-    handleSubmit,
-    formState: { isSubmitting },
-  } = form;
-
-  const onSubmit = async (
-    values: z.infer<typeof contactInformationFormSchema>,
-  ) => {
-    setData((prev) => ({
-      ...prev,
-      ...values,
-    }));
-
-    nextStep();
-  };
-
   return (
     <FormStepLayout
       icon={SquareUserRound}
       title="Contact Information"
       submitLabel={isSubmitting ? "Saving..." : "Continue"}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
       onBack={prevStep}
     >
       {/* Contact Section */}

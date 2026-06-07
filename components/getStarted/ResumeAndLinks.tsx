@@ -1,7 +1,5 @@
 "use client";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { Field, FieldError } from "../ui/field";
 import { Input } from "../ui/input";
 import { FileSearchCorner } from "lucide-react";
@@ -13,12 +11,14 @@ import { FormStepLayout } from "./FormStepLayout";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 import { FormSection } from "./FormSection";
+import { useWizardStep } from "./useWizardStepForm";
 
 const ResumeAndLinks = () => {
+  const { data } = useWizardFormContext();
   const [skillInput, setSkillInput] = useState("");
-  const { nextStep, setData, data, prevStep } = useWizardFormContext();
-  const form = useForm<z.infer<typeof resumeFormSchema>>({
-    resolver: zodResolver(resumeFormSchema),
+
+  const { form, onSubmit, prevStep } = useWizardStep({
+    schema: resumeFormSchema,
     defaultValues: {
       resume: data?.resume ?? undefined,
       linkedin: data?.linkedin ?? "",
@@ -29,16 +29,11 @@ const ResumeAndLinks = () => {
     },
   });
 
-  const onSubmit = (values: FormValues) => {
-    setData((prev) => ({ ...prev, ...values }));
-    nextStep();
-  };
-
   return (
     <FormStepLayout
       icon={FileSearchCorner}
       title="Resume, Websites, & Skills"
-      onSubmit={form.handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
       onBack={prevStep}
     >
       <FormSection

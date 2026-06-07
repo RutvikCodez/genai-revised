@@ -1,7 +1,5 @@
 "use client";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { Field, FieldError, FieldLabel } from "../ui/field";
 import { BriefcaseBusiness } from "lucide-react";
 import { useWizardFormContext } from "@/app/context/WizardFormContext";
@@ -14,27 +12,24 @@ import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 import { FormSection } from "./FormSection";
 import { FieldArrayCard } from "./FieldArrayCard";
+import { useWizardStep } from "./useWizardStepForm";
 
 const WorkHistory = () => {
-  const { nextStep, setData, data, prevStep } = useWizardFormContext();
+   const { data } = useWizardFormContext();
 
-  const form = useForm<z.infer<typeof workHistoryFormSchema>>({
-    resolver: zodResolver(workHistoryFormSchema),
+  const { form, onSubmit, prevStep } = useWizardStep({
+    schema: workHistoryFormSchema,
     defaultValues: {
       jobs: data?.jobs?.length ? data.jobs : [defaultJob],
     },
   });
 
-  const onSubmit = (data: z.infer<typeof workHistoryFormSchema>) => {
-    setData((prev) => ({ ...prev, ...data }));
-    nextStep();
-  };
 
   return (
     <FormStepLayout
       icon={BriefcaseBusiness}
       title="Professional Experience"
-      onSubmit={form.handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
       onBack={prevStep}
     >
       <FormSection
