@@ -12,6 +12,7 @@ import { FormStepLayout } from "./FormStepLayout";
 import { FormFieldArray } from "./FormFieldArray";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
+import { FormSection } from "./FormSection";
 
 const WorkHistory = () => {
   const { nextStep, setData, data, prevStep } = useWizardFormContext();
@@ -35,14 +36,10 @@ const WorkHistory = () => {
       onSubmit={form.handleSubmit(onSubmit)}
       onBack={prevStep}
     >
-      <div className="flex flex-col gap-1">
-        <p className="text-sm font-medium">Employment History</p>
-
-        <p className="text-sm text-muted-foreground">
-          Showcase your professional experience, responsibilities, and
-          achievements.
-        </p>
-      </div>
+      <FormSection
+        title="Employment History"
+        description="Showcase your professional experience, responsibilities, and achievements."
+      />
       <FormFieldArray
         control={form.control}
         name="jobs"

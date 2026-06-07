@@ -12,13 +12,12 @@ import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 
 import { perosnalInfomrationFormSchema } from "@/constants";
+import { FormSection } from "./FormSection";
 
 const PersonalInfomation = () => {
   const { nextStep, setData, data } = useWizardFormContext();
 
-  const form = useForm<
-    z.infer<typeof perosnalInfomrationFormSchema>
-  >({
+  const form = useForm<z.infer<typeof perosnalInfomrationFormSchema>>({
     resolver: zodResolver(perosnalInfomrationFormSchema),
     defaultValues: {
       firstName: data?.firstName ?? "",
@@ -33,7 +32,7 @@ const PersonalInfomation = () => {
   } = form;
 
   const onSubmit = async (
-    values: z.infer<typeof perosnalInfomrationFormSchema>
+    values: z.infer<typeof perosnalInfomrationFormSchema>,
   ) => {
     setData((prev) => ({ ...prev, ...values }));
     nextStep();
@@ -47,14 +46,10 @@ const PersonalInfomation = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       {/* Section Header */}
-      <div className="flex flex-col gap-1">
-        <p className="text-sm font-medium text-foreground">
-          Legal Identity
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Please enter your official name as it appears on documents
-        </p>
-      </div>
+      <FormSection
+        title="Legal Identity"
+        description="Please enter your official name as it appears on documents"
+      />
 
       {/* Fields */}
       <FieldGrid cols={2}>

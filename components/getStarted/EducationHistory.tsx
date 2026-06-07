@@ -17,6 +17,7 @@ import { FormStepLayout } from "./FormStepLayout";
 import { FormFieldArray } from "./FormFieldArray";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
+import { FormSection } from "./FormSection";
 
 const EducationHistory = () => {
   const { prevStep, setData, data } = useWizardFormContext();
@@ -54,14 +55,10 @@ const EducationHistory = () => {
       onBack={prevStep}
     >
       {/* Intro */}
-      <div className="flex flex-col gap-1">
-        <p className="text-sm font-medium">Academic Background</p>
-
-        <p className="text-sm text-muted-foreground">
-          Add your educational qualifications, institutions, and graduation
-          details.
-        </p>
-      </div>
+      <FormSection
+        title="Academic Background"
+        description="Add your educational qualifications, institutions, and graduation details."
+      />
 
       <FormFieldArray
         control={form.control}

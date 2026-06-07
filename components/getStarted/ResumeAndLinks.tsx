@@ -12,6 +12,7 @@ import { resumeFormSchema, websiteFields } from "@/constants";
 import { FormStepLayout } from "./FormStepLayout";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
+import { FormSection } from "./FormSection";
 
 const ResumeAndLinks = () => {
   const [skillInput, setSkillInput] = useState("");
@@ -40,12 +41,10 @@ const ResumeAndLinks = () => {
       onSubmit={form.handleSubmit(onSubmit)}
       onBack={prevStep}
     >
-      <div className="flex flex-col gap-1">
-        <h3 className="text-sm font-semibold tracking-wide">Resume</h3>
-        <p className="text-sm text-muted-foreground">
-          Upload your latest resume in PDF format.
-        </p>
-      </div>
+      <FormSection
+        title="Resume"
+        description="Upload your latest resume in PDF format."
+      />
       <Controller
         name="resume"
         control={form.control}
@@ -92,16 +91,10 @@ const ResumeAndLinks = () => {
           </Field>
         )}
       />
-
-      <div className="flex flex-col gap-1">
-        <h3 className="text-sm font-semibold tracking-wide">
-          Professional Profiles
-        </h3>
-
-        <p className="text-sm text-muted-foreground">
-          Add links that showcase your work and experience.
-        </p>
-      </div>
+      <FormSection
+        title="Professional Profiles"
+        description="Add links that showcase your work and experience."
+      />
       <FieldGrid cols={2}>
         {websiteFields.map(({ name, label }, index) => (
           <FormField
@@ -117,13 +110,10 @@ const ResumeAndLinks = () => {
         ))}
       </FieldGrid>
 
-      <div className="flex flex-col gap-1">
-        <h3 className="text-sm font-semibold tracking-wide">Skills</h3>
-
-        <p className="text-sm text-muted-foreground">
-          Add up to 25 skills that best represent your expertise.
-        </p>
-      </div>
+      <FormSection
+        title="Skills"
+        description="Add up to 25 skills that best represent your expertise."
+      />
       <Controller
         name="skills"
         control={form.control}

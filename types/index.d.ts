@@ -174,4 +174,9 @@ type EducationHistoryFieldsType = {
   name: keyof FormValues["education"][0];
   label: string;
   type: string;
-}
+};
+
+type FormSectionProps = {
+  title: string;
+  description: string;
+};

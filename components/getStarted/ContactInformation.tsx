@@ -16,14 +16,12 @@ import {
   contactFields,
   contactInformationFormSchema,
 } from "@/constants";
+import { FormSection } from "./FormSection";
 
 const ContactInformation = () => {
-  const { nextStep, prevStep, setData, data } =
-    useWizardFormContext();
+  const { nextStep, prevStep, setData, data } = useWizardFormContext();
 
-  const form = useForm<
-    z.infer<typeof contactInformationFormSchema>
-  >({
+  const form = useForm<z.infer<typeof contactInformationFormSchema>>({
     resolver: zodResolver(contactInformationFormSchema),
     mode: "onTouched",
     defaultValues: {
@@ -44,7 +42,7 @@ const ContactInformation = () => {
   } = form;
 
   const onSubmit = async (
-    values: z.infer<typeof contactInformationFormSchema>
+    values: z.infer<typeof contactInformationFormSchema>,
   ) => {
     setData((prev) => ({
       ...prev,
@@ -64,16 +62,10 @@ const ContactInformation = () => {
     >
       {/* Contact Section */}
       <section className="flex flex-col gap-5">
-        <div className="flex flex-col gap-1">
-          <h3 className="text-sm font-semibold tracking-wide">
-            Contact Details
-          </h3>
-
-          <p className="text-sm text-muted-foreground">
-            We&apos;ll use this information to communicate with you and
-            verify your profile.
-          </p>
-        </div>
+        <FormSection
+          title="Contact Details"
+          description="We'll use this information to communicate with you and verify your profile."
+        />
 
         <FieldGrid cols={2}>
           {contactFields.map(({ name, label, type }, index) => (
@@ -96,16 +88,10 @@ const ContactInformation = () => {
 
       {/* Address Section */}
       <section className="flex flex-col gap-5">
-        <div className="flex flex-col gap-1">
-          <h3 className="text-sm font-semibold tracking-wide">
-            Address Information
-          </h3>
-
-          <p className="text-sm text-muted-foreground">
-            Provide your current residential address for profile
-            completion.
-          </p>
-        </div>
+        <FormSection
+          title="Address Information"
+          description="Provide your current residential address for profile completion."
+        />
 
         <FieldGrid cols={2}>
           {addressFields.map(({ name, label, type }, index) => (
