@@ -1,38 +1,28 @@
-"use client"
+"use client";
 import { CircleUserRound } from "lucide-react";
-import { useWizardFormContext } from "@/app/context/WizardFormContext";
-import { FormStepLayout } from "./FormStepLayout";
-import { FieldGrid } from "./FieldGrid";
-import { FormField } from "./FormField";
+import { createStep } from "@/lib/createStep";
 import { perosnalInfomrationFormSchema } from "@/constants";
 import { FormSection } from "./FormSection";
-import { useWizardStep } from "../../app/hooks/useWizardStepForm";
+import { FieldGrid } from "./FieldGrid";
+import { FormField } from "./FormField";
 
-const PersonalInfomation = () => {
-  const { data } = useWizardFormContext();
-
-  const { form, onSubmit, isSubmitting } = useWizardStep({
+export default createStep(
+  {
+    icon: CircleUserRound,
+    title: "Personal Information",
     schema: perosnalInfomrationFormSchema,
-    defaultValues: {
-      firstName: data?.firstName ?? "",
-      lastName: data?.lastName ?? "",
-    },
-  });
-
-  return (
-    <FormStepLayout
-      icon={CircleUserRound}
-      title="Personal Information"
-      submitLabel={isSubmitting ? "Saving..." : "Continue"}
-      onSubmit={onSubmit}
-    >
-      {/* Section Header */}
+    getDefaults: (d) => ({
+      firstName: d?.firstName ?? "",
+      lastName: d?.lastName ?? "",
+    }),
+    submitLabel: (s) => (s ? "Saving..." : "Continue"),
+  },
+  (form) => (
+    <>
       <FormSection
         title="Legal Identity"
         description="Please enter your official name as it appears on documents"
       />
-
-      {/* Fields */}
       <FieldGrid cols={2}>
         {(["firstName", "lastName"] as const).map((name) => (
           <FormField
@@ -43,8 +33,6 @@ const PersonalInfomation = () => {
           />
         ))}
       </FieldGrid>
-    </FormStepLayout>
-  );
-};
-
-export default PersonalInfomation;
+    </>
+  ),
+);
