@@ -12,7 +12,7 @@ import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 import { FormSection } from "./FormSection";
 import { FieldArrayCard } from "./FieldArrayCard";
-import { useWizardStep } from "./useWizardStepForm";
+import { useWizardStep } from "../../app/hooks/useWizardStepForm";
 
 const WorkHistory = () => {
    const { data } = useWizardFormContext();

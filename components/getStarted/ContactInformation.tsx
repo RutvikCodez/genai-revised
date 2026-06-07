@@ -10,7 +10,7 @@ import {
   contactInformationFormSchema,
 } from "@/constants";
 import { FormSection } from "./FormSection";
-import { useWizardStep } from "./useWizardStepForm";
+import { useWizardStep } from "../../app/hooks/useWizardStepForm";
 
 const ContactInformation = () => {
   const { data } = useWizardFormContext();

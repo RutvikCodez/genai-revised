@@ -11,7 +11,7 @@ import { FormStepLayout } from "./FormStepLayout";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 import { FormSection } from "./FormSection";
-import { useWizardStep } from "./useWizardStepForm";
+import { useWizardStep } from "../../app/hooks/useWizardStepForm";
 
 const ResumeAndLinks = () => {
   const { data } = useWizardFormContext();

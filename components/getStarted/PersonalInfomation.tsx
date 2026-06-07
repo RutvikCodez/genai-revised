@@ -6,7 +6,7 @@ import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 import { perosnalInfomrationFormSchema } from "@/constants";
 import { FormSection } from "./FormSection";
-import { useWizardStep } from "./useWizardStepForm";
+import { useWizardStep } from "../../app/hooks/useWizardStepForm";
 
 const PersonalInfomation = () => {
   const { data } = useWizardFormContext();
