@@ -131,6 +131,7 @@ type FormFieldProps<T extends FieldValues> = {
   control: Control<T>;
   inputProps?: Omit<InputProps, "name">;
   renderInput?: ComponentType<InputProps & { invalid: boolean }>;
+  disabled?: boolean
 };
 
 type FormStepLayoutProps = {
@@ -249,6 +250,7 @@ type FieldArrayProps<T extends FieldValues> = {
   defaultItem: RHFFieldArray<T, ArrayPath<T>>;
   addLabel?: string;
   renderExtra?: (index: number) => React.ReactNode;
+  disabled?: boolean
 };
 
 type StepConfig<T extends FieldValues> = {

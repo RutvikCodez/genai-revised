@@ -26,7 +26,8 @@ export default createStep(
       fields={jobInputFields}
       defaultItem={defaultJob}
       addLabel="Add Experience"
-      renderExtra={(index) => (
+      renderExtra={(index) => {
+        return (
         <>
           <Controller
             name={`jobs.${index}.currentlyWorking`}
@@ -58,7 +59,8 @@ export default createStep(
             )}
           />
         </>
-      )}
+      )
+      }}
     />
   ),
 );

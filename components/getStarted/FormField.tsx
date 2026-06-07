@@ -10,6 +10,7 @@ export const FormField = memo(function FormField<T extends FieldValues>({
   control,
   inputProps,
   renderInput: RenderInput,
+  disabled = false
 }: FormFieldProps<T>) {
   return (
     <ControllerField name={name} control={control} label={label}>
@@ -24,6 +25,7 @@ export const FormField = memo(function FormField<T extends FieldValues>({
             autoComplete="off"
             aria-invalid={invalid}
             className="h-11 rounded-xl border-border/60 bg-background/60 backdrop-blur-sm transition-all focus:border-primary focus:ring-0"
+            disabled={disabled}
           />
         )
       }

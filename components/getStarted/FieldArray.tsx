@@ -16,6 +16,7 @@ export function FieldArray<T extends FieldValues>({
   defaultItem,
   addLabel = "Add",
   renderExtra,
+  disabled = false
 }: FieldArrayProps<T>) {
   const { fields: items, append, remove } = useFieldArray({ control, name });
 
@@ -56,6 +57,7 @@ export function FieldArray<T extends FieldValues>({
                 label={label}
                 control={control}
                 inputProps={{ type, placeholder: label }}
+                disabled={disabled}
               />
             ))}
           </FieldGrid>
