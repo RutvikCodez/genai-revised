@@ -31,28 +31,48 @@ const WorkHistory = () => {
   return (
     <FormStepLayout
       icon={BriefcaseBusiness}
-      title="Work History"
+      title="Professional Experience"
       onSubmit={form.handleSubmit(onSubmit)}
       onBack={prevStep}
     >
+      <div className="flex flex-col gap-1">
+        <p className="text-sm font-medium">Employment History</p>
+
+        <p className="text-sm text-muted-foreground">
+          Showcase your professional experience, responsibilities, and
+          achievements.
+        </p>
+      </div>
       <FormFieldArray
         control={form.control}
         name="jobs"
-        addLabel="Add Job"
+        addLabel="Add Experience"
         defaultItem={defaultJob}
         renderItem={(index, remove) => (
-          <>
-            <div className="flex gap-2 items-center">
-              <span>Job {index + 1}</span>
-              <button
-                type="button"
-                className="text-red-500 text-sm"
-                onClick={() => remove(index)}
-              >
-                Remove
-              </button>
+          <div className="relative rounded-2xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm flex flex-col gap-6">
+            {/* Header */}
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="font-semibold">Experience #{index + 1}</h3>
+
+                <p className="text-sm text-muted-foreground">
+                  Add details about your professional experience
+                </p>
+              </div>
+
+              {index > 0 && (
+                <button
+                  type="button"
+                  onClick={() => remove(index)}
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Remove
+                </button>
+              )}
             </div>
-            <FieldGrid className="max-md:flex-col max-md:flex max-md:gap-5">
+
+            {/* Fields */}
+            <FieldGrid cols={2}>
               {jobInputFields.map(({ name, label, type }, fieldIndex) => (
                 <FormField
                   key={fieldIndex}
@@ -61,52 +81,56 @@ const WorkHistory = () => {
                   control={form.control}
                   inputProps={{
                     type,
+                    placeholder: label,
                     disabled:
                       name === "endDate" &&
                       !!form.watch(`jobs.${index}.currentlyWorking`),
                   }}
                 />
               ))}
-
-              <Controller
-                name={`jobs.${index}.currentlyWorking`}
-                control={form.control}
-                render={({ field }) => (
-                  <Field orientation="horizontal">
-                    <Checkbox
-                      checked={field.value ?? false}
-                      onCheckedChange={(checked) => field.onChange(checked)}
-                    />
-                    <FieldLabel>Currently Works Here</FieldLabel>
-                  </Field>
-                )}
-              />
-
-              <Controller
-                name={`jobs.${index}.description`}
-                control={form.control}
-                render={({ field, fieldState }) => (
-                  <Field
-                    data-invalid={fieldState.invalid}
-                    className="col-span-2"
-                  >
-                    <FieldLabel htmlFor={`description-${index}`}>
-                      Description
-                    </FieldLabel>
-                    <Textarea
-                      {...field}
-                      id={`description-${index}`}
-                      aria-invalid={fieldState.invalid}
-                      autoComplete="off"
-                    />
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
-                  </Field>
-                )}
-              />
             </FieldGrid>
-          </>
+
+            {/* Current Job */}
+            <Controller
+              name={`jobs.${index}.currentlyWorking`}
+              control={form.control}
+              render={({ field }) => (
+                <Field orientation="horizontal">
+                  <Checkbox
+                    checked={field.value ?? false}
+                    onCheckedChange={(checked) => field.onChange(checked)}
+                  />
+
+                  <FieldLabel>I currently work here</FieldLabel>
+                </Field>
+              )}
+            />
+
+            {/* Description */}
+            <Controller
+              name={`jobs.${index}.description`}
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={`description-${index}`}>
+                    Responsibilities & Achievements
+                  </FieldLabel>
+
+                  <Textarea
+                    {...field}
+                    id={`description-${index}`}
+                    rows={5}
+                    placeholder="Describe your responsibilities, achievements, technologies used, and impact..."
+                    aria-invalid={fieldState.invalid}
+                  />
+
+                  {fieldState.error && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                </Field>
+              )}
+            />
+          </div>
         )}
       />
     </FormStepLayout>

@@ -1,12 +1,16 @@
 "use client";
+
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { SquareUserRound } from "lucide-react";
+
 import { useWizardFormContext } from "@/app/context/WizardFormContext";
+
 import { FormStepLayout } from "./FormStepLayout";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
+
 import {
   addressFields,
   contactFields,
@@ -14,10 +18,14 @@ import {
 } from "@/constants";
 
 const ContactInformation = () => {
-  const { nextStep, setData, data, prevStep } = useWizardFormContext();
+  const { nextStep, prevStep, setData, data } =
+    useWizardFormContext();
 
-  const form = useForm<z.infer<typeof contactInformationFormSchema>>({
+  const form = useForm<
+    z.infer<typeof contactInformationFormSchema>
+  >({
     resolver: zodResolver(contactInformationFormSchema),
+    mode: "onTouched",
     defaultValues: {
       email: data?.email ?? "",
       phone: data?.phone ?? "",
@@ -30,8 +38,19 @@ const ContactInformation = () => {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof contactInformationFormSchema>) => {
-    setData((prev) => ({ ...prev, ...data }));
+  const {
+    handleSubmit,
+    formState: { isSubmitting },
+  } = form;
+
+  const onSubmit = async (
+    values: z.infer<typeof contactInformationFormSchema>
+  ) => {
+    setData((prev) => ({
+      ...prev,
+      ...values,
+    }));
+
     nextStep();
   };
 
@@ -39,34 +58,70 @@ const ContactInformation = () => {
     <FormStepLayout
       icon={SquareUserRound}
       title="Contact Information"
-      onSubmit={form.handleSubmit(onSubmit)}
+      submitLabel={isSubmitting ? "Saving..." : "Continue"}
+      onSubmit={handleSubmit(onSubmit)}
       onBack={prevStep}
     >
-      <span>Contact</span>
-      <FieldGrid className="max-md:flex-col max-md:flex max-md:gap-5">
-        {contactFields.map(({ name, label, type }, index) => (
-          <FormField
-            key={index}
-            name={name}
-            label={label}
-            control={form.control}
-            inputProps={{ type }}
-          />
-        ))}
-      </FieldGrid>
+      {/* Contact Section */}
+      <section className="flex flex-col gap-5">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-sm font-semibold tracking-wide">
+            Contact Details
+          </h3>
 
-      <span>Address</span>
-      <FieldGrid className="max-md:flex-col max-md:flex max-md:gap-5">
-        {addressFields.map(({ name, label, type }, index) => (
-          <FormField
-            key={index}
-            name={name}
-            label={label}
-            control={form.control}
-            inputProps={{ type }}
-          />
-        ))}
-      </FieldGrid>
+          <p className="text-sm text-muted-foreground">
+            We&apos;ll use this information to communicate with you and
+            verify your profile.
+          </p>
+        </div>
+
+        <FieldGrid cols={2}>
+          {contactFields.map(({ name, label, type }, index) => (
+            <FormField
+              key={index}
+              name={name}
+              label={label}
+              control={form.control}
+              inputProps={{
+                type,
+                placeholder: label,
+              }}
+            />
+          ))}
+        </FieldGrid>
+      </section>
+
+      {/* Divider */}
+      <div className="h-px w-full bg-border" />
+
+      {/* Address Section */}
+      <section className="flex flex-col gap-5">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-sm font-semibold tracking-wide">
+            Address Information
+          </h3>
+
+          <p className="text-sm text-muted-foreground">
+            Provide your current residential address for profile
+            completion.
+          </p>
+        </div>
+
+        <FieldGrid cols={2}>
+          {addressFields.map(({ name, label, type }, index) => (
+            <FormField
+              key={index}
+              name={name}
+              label={label}
+              control={form.control}
+              inputProps={{
+                type,
+                placeholder: label,
+              }}
+            />
+          ))}
+        </FieldGrid>
+      </section>
     </FormStepLayout>
   );
 };
