@@ -126,7 +126,7 @@ type WizardFormData = {
 type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 type FormFieldProps<T extends FieldValues> = {
-  name: Path<T>;
+  name: Extract<Path<T>, string>;
   label: string;
   control: Control<T>;
   inputProps?: Omit<InputProps, "name">;
@@ -162,4 +162,10 @@ type AdressFieldsType = {
   name: keyof FormValues;
   label: string;
   type?: string;
+};
+
+type WorkHistoryPropsType = {
+  name: keyof Omit<FormValues["jobs"][0], "currentlyWorking" | "description">;
+  label: string;
+  type: string;
 };
