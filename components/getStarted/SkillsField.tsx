@@ -63,7 +63,7 @@ export function SkillsField<T extends FieldValues>({
               {skills.length}/{max} skills added
             </p>
 
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+            {fieldState.error && <FieldError errors={[fieldState.error]} />}
           </Field>
         );
       }}

@@ -2,9 +2,7 @@
 import { CircleUserRound } from "lucide-react";
 import { createStep } from "@/lib/createStep";
 import { perosnalInfomrationFormSchema } from "@/constants";
-import { FormSection } from "./FormSection";
-import { FieldGrid } from "./FieldGrid";
-import { FormField } from "./FormField";
+import { FieldSection } from "./FieldSection";
 
 export default createStep(
   {
@@ -18,21 +16,14 @@ export default createStep(
     submitLabel: (s) => (s ? "Saving..." : "Continue"),
   },
   (form) => (
-    <>
-      <FormSection
-        title="Legal Identity"
-        description="Please enter your official name as it appears on documents"
-      />
-      <FieldGrid cols={2}>
-        {(["firstName", "lastName"] as const).map((name) => (
-          <FormField
-            key={name}
-            name={name}
-            label={name === "firstName" ? "First Name" : "Last Name"}
-            control={form.control}
-          />
-        ))}
-      </FieldGrid>
-    </>
+    <FieldSection
+      title="Legal Identity"
+      description="Please enter your official name as it appears on documents"
+      control={form.control}
+      fields={[
+        { name: "firstName", label: "First Name" },
+        { name: "lastName", label: "Last Name" },
+      ]}
+    />
   ),
 );

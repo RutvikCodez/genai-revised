@@ -30,7 +30,7 @@ export function createStep<T extends FieldValues>(
       <FormStepLayout
         icon={config.icon}
         title={config.title}
-        submitLabel={step.isSubmitting ? label : label}
+        submitLabel={label}
         onSubmit={step.onSubmit}
         onBack={
           "prevStep" in step

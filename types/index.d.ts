@@ -159,7 +159,7 @@ type FieldGridProps = {
 type FormValues = z.infer<typeof formSchema>;
 
 type AdressFieldsType = {
-  name: keyof FormValues;
+  name: Extract<keyof FormValues, string>;
   label: string;
   type?: string;
 };
