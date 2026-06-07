@@ -2,20 +2,8 @@
 // After: one call produces the full component
 import { useWizardFormContext } from "@/app/context/WizardFormContext";
 import { useWizardStep } from "@/app/hooks/useWizardStepForm";
-import { LucideIcon } from "lucide-react";
-import { ZodSchema } from "zod";
-import { DefaultValues, FieldValues } from "react-hook-form";
+import { FieldValues } from "react-hook-form";
 import { FormStepLayout } from "../components/getStarted/FormStepLayout";
-
-interface StepConfig<T extends FieldValues> {
-  icon: LucideIcon;
-  title: string;
-  schema: ZodSchema<T>;
-  getDefaults: (data: Partial<T>) => DefaultValues<T>;
-  submitLabel?: string | ((submitting: boolean) => string);
-  advance?: boolean;
-  onAfterSubmit?: (values: T) => Promise<void>;
-}
 
 export function createStep<T extends FieldValues>(
   config: StepConfig<T>,

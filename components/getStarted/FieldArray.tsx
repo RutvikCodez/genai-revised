@@ -1,33 +1,21 @@
 "use client";
-import { FieldValues, useFieldArray, Control, Path, ArrayPath, FieldArray as RHFFieldArray } from "react-hook-form";
+import { FieldValues, useFieldArray, Path } from "react-hook-form";
 import { Button } from "../ui/button";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 import { FormSection } from "./FormSection";
 
-interface FieldDef {
-  name: string;
-  label: string;
-  type?: string;
-}
-
-interface FieldArrayProps<T extends FieldValues> {
-  control: Control<T>;
-  name: ArrayPath<T>;
-  title: string;
-  description: string;
-  cardLabel: string;
-  cardSubtitle?: string;
-  fields: FieldDef[];
-  defaultItem: RHFFieldArray<T, ArrayPath<T>>;
-  addLabel?: string;
-  renderExtra?: (index: number) => React.ReactNode;
-}
-
 export function FieldArray<T extends FieldValues>({
-  control, name, title, description,
-  cardLabel, cardSubtitle, fields,
-  defaultItem, addLabel = "Add", renderExtra,
+  control,
+  name,
+  title,
+  description,
+  cardLabel,
+  cardSubtitle,
+  fields,
+  defaultItem,
+  addLabel = "Add",
+  renderExtra,
 }: FieldArrayProps<T>) {
   const { fields: items, append, remove } = useFieldArray({ control, name });
 
@@ -36,15 +24,25 @@ export function FieldArray<T extends FieldValues>({
       <FormSection title={title} description={description} />
 
       {items.map((item, index) => (
-        <div key={item.id} className="relative rounded-2xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm flex flex-col gap-6">
+        <div
+          key={item.id}
+          className="relative rounded-2xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm flex flex-col gap-6"
+        >
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-semibold">{cardLabel} #{index + 1}</h3>
-              {cardSubtitle && <p className="text-sm text-muted-foreground">{cardSubtitle}</p>}
+              <h3 className="font-semibold">
+                {cardLabel} #{index + 1}
+              </h3>
+              {cardSubtitle && (
+                <p className="text-sm text-muted-foreground">{cardSubtitle}</p>
+              )}
             </div>
             {index > 0 && (
-              <button type="button" onClick={() => remove(index)}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+              <button
+                type="button"
+                onClick={() => remove(index)}
+                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              >
                 Remove
               </button>
             )}
@@ -66,7 +64,11 @@ export function FieldArray<T extends FieldValues>({
         </div>
       ))}
 
-      <Button type="button" onClick={() => append(defaultItem)} className="w-fit">
+      <Button
+        type="button"
+        onClick={() => append(defaultItem)}
+        className="w-fit"
+      >
         {addLabel}
       </Button>
     </>

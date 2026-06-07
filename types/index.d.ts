@@ -206,13 +206,13 @@ type FileUploadFieldProps<T extends FieldValues> = {
   badgeLabel?: string;
   description?: string;
   placeholder?: string;
-}
+};
 
 type FieldDef<T> = {
   name: keyof T;
   label: string;
   type?: string;
-}
+};
 
 type FieldArraySectionProps<T extends FieldValues, Item extends FieldValues> = {
   control: Control<T>;
@@ -226,8 +226,37 @@ type FieldArraySectionProps<T extends FieldValues, Item extends FieldValues> = {
   addLabel: string;
   /** Optional slot rendered after the grid inside each card (e.g. checkbox + textarea) */
   renderExtra?: (index: number) => React.ReactNode;
-}
+};
 
 type WorkHistoryForm = {
-  jobs: typeof defaultJob[];
+  jobs: (typeof defaultJob)[];
+};
+
+type FieldDef = {
+  name: string;
+  label: string;
+  type?: string;
+};
+
+type FieldArrayProps<T extends FieldValues> = {
+  control: Control<T>;
+  name: ArrayPath<T>;
+  title: string;
+  description: string;
+  cardLabel: string;
+  cardSubtitle?: string;
+  fields: FieldDef[];
+  defaultItem: RHFFieldArray<T, ArrayPath<T>>;
+  addLabel?: string;
+  renderExtra?: (index: number) => React.ReactNode;
+};
+
+type StepConfig<T extends FieldValues> = {
+  icon: LucideIcon;
+  title: string;
+  schema: ZodSchema<T>;
+  getDefaults: (data: Partial<T>) => DefaultValues<T>;
+  submitLabel?: string | ((submitting: boolean) => string);
+  advance?: boolean;
+  onAfterSubmit?: (values: T) => Promise<void>;
 };
