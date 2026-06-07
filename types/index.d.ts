@@ -187,4 +187,40 @@ type FieldArrayCardProps = {
   subtitle: string;
   onRemove: (index: number) => void;
   children: React.ReactNode;
+};
+
+type SkillsFieldProps<T extends FieldValues> = {
+  name: Path<T>;
+  control: Control<T>;
+  placeholder?: string;
+  max?: number;
+};
+
+type FileUploadFieldProps<T extends FieldValues> = {
+  name: Path<T>;
+  control: Control<T>;
+  accept?: string;
+  badgeLabel?: string;
+  description?: string;
+  placeholder?: string;
+}
+
+type FieldDef<T> = {
+  name: keyof T;
+  label: string;
+  type?: string;
+}
+
+type FieldArraySectionProps<T extends FieldValues, Item extends FieldValues> = {
+  control: Control<T>;
+  name: ArrayPath<T>;
+  title: string;
+  description: string;
+  cardLabel: string;
+  cardSubtitle: string;
+  fields: FieldDef<Item>[];
+  defaultItem: Item;
+  addLabel: string;
+  /** Optional slot rendered after the grid inside each card (e.g. checkbox + textarea) */
+  renderExtra?: (index: number) => React.ReactNode;
 }
