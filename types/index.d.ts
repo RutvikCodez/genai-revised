@@ -165,13 +165,16 @@ type AdressFieldsType = {
 };
 
 type WorkHistoryPropsType = {
-  name: keyof Omit<FormValues["jobs"][0], "currentlyWorking" | "description">;
+  name: Extract<
+    keyof Omit<FormValues["jobs"][0], "currentlyWorking" | "description">,
+    string
+  >;
   label: string;
   type: string;
 };
 
 type EducationHistoryFieldsType = {
-  name: keyof FormValues["education"][0];
+  name: Extract<keyof FormValues["education"][0], string>;
   label: string;
   type: string;
 };
@@ -224,3 +227,7 @@ type FieldArraySectionProps<T extends FieldValues, Item extends FieldValues> = {
   /** Optional slot rendered after the grid inside each card (e.g. checkbox + textarea) */
   renderExtra?: (index: number) => React.ReactNode;
 }
+
+type WorkHistoryForm = {
+  jobs: typeof defaultJob[];
+};
