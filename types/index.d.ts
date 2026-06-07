@@ -169,3 +169,9 @@ type WorkHistoryPropsType = {
   label: string;
   type: string;
 };
+
+type EducationHistoryFieldsType = {
+  name: keyof FormValues["education"][0];
+  label: string;
+  type: string;
+}

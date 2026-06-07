@@ -395,3 +395,39 @@ export const jobInputFields: WorkHistoryPropsType[] = [
   { name: "startDate", label: "Start Date", type: "date" },
   { name: "endDate", label: "End Date", type: "date" },
 ];
+
+export const educationHistoryFormSchema = z.object({
+  education: z.array(
+    z.object({
+      school: z.string().trim().min(2, "School name is required"),
+
+      degree: z.string().trim().min(2, "Degree is required"),
+
+      major: z.string().trim().min(2, "Major is required"),
+
+      gpa: z.string().trim().optional().or(z.literal("")),
+
+      startDate: z.string().min(1, "Start date is required"),
+
+      endDate: z.string().optional().or(z.literal("")),
+    }),
+  ),
+});
+
+export const defaultEducation: FormValues["education"][0] = {
+  school: "",
+  degree: "",
+  major: "",
+  gpa: "",
+  startDate: "",
+  endDate: "",
+};
+
+export const educationInputFields: EducationHistoryFieldsType[] = [
+  { name: "school", label: "School", type: "text" },
+  { name: "degree", label: "Degree", type: "text" },
+  { name: "major", label: "Major", type: "text" },
+  { name: "gpa", label: "GPA", type: "text" },
+  { name: "startDate", label: "Start Date", type: "date" },
+  { name: "endDate", label: "End Date", type: "date" },
+];
