@@ -72,3 +72,21 @@ type typesforWizardForm = {
   Steps: WizardSteps[];
   currentStep: number;
 };
+
+type WizardFormData = {
+  // Personal Information
+  firstName?: string;
+  lastName?: string;
+
+  // Contact Information
+  email?: string;
+  phone?: string;
+
+  // Address Information
+  addressLine1?: string;
+  addressLine2?: string; // optional
+  city?: string;
+  state?: string;
+  country?: string;
+  postalCode?: string;
+};
