@@ -1,11 +1,10 @@
-"use client"
+"use client";
 import { memo } from "react";
-import { Controller, FieldValues } from "react-hook-form";
-
-import { Field, FieldError, FieldLabel } from "../ui/field";
+import { FieldValues } from "react-hook-form";
 import { Input } from "../ui/input";
+import { ControllerField } from "./ControllerField";
 
-function FormFieldBase<T extends FieldValues>({
+export const FormField = memo(function FormField<T extends FieldValues>({
   name,
   label,
   control,
@@ -13,47 +12,21 @@ function FormFieldBase<T extends FieldValues>({
   renderInput: RenderInput,
 }: FormFieldProps<T>) {
   return (
-    <Controller
-      name={name}
-      control={control}
-      render={({ field, fieldState }) => {
-        const isInvalid = !!fieldState.error;
-
-        return (
-          <Field data-invalid={isInvalid} className="space-y-2">
-            {/* Label */}
-            <FieldLabel htmlFor={name} className="text-sm font-medium">
-              {label}
-            </FieldLabel>
-
-            {/* Input */}
-            {RenderInput ? (
-              <RenderInput
-                {...field}
-                {...inputProps}
-                id={name}
-                invalid={isInvalid}
-              />
-            ) : (
-              <Input
-                {...field}
-                {...inputProps}
-                id={name}
-                autoComplete="off"
-                aria-invalid={isInvalid}
-                className="h-11 rounded-xl border-border/60 bg-background/60 backdrop-blur-sm transition-all focus:border-primary focus:ring-0"
-              />
-            )}
-
-            {/* Error */}
-            {isInvalid && fieldState.error && (
-              <FieldError errors={[fieldState.error]} />
-            )}
-          </Field>
-        );
-      }}
-    />
+    <ControllerField name={name} control={control} label={label}>
+      {(field, invalid) =>
+        RenderInput ? (
+          <RenderInput {...field} {...inputProps} id={String(name)} invalid={invalid} />
+        ) : (
+          <Input
+            {...field}
+            {...inputProps}
+            id={String(name)}
+            autoComplete="off"
+            aria-invalid={invalid}
+            className="h-11 rounded-xl border-border/60 bg-background/60 backdrop-blur-sm transition-all focus:border-primary focus:ring-0"
+          />
+        )
+      }
+    </ControllerField>
   );
-}
-
-export const FormField = memo(FormFieldBase) as typeof FormFieldBase;
+}) as <T extends FieldValues>(props: FormFieldProps<T>) => React.ReactElement;
