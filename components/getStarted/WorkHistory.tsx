@@ -13,6 +13,7 @@ import { FormFieldArray } from "./FormFieldArray";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 import { FormSection } from "./FormSection";
+import { FieldArrayCard } from "./FieldArrayCard";
 
 const WorkHistory = () => {
   const { nextStep, setData, data, prevStep } = useWizardFormContext();
@@ -46,29 +47,12 @@ const WorkHistory = () => {
         addLabel="Add Experience"
         defaultItem={defaultJob}
         renderItem={(index, remove) => (
-          <div className="relative rounded-2xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm flex flex-col gap-6">
-            {/* Header */}
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-semibold">Experience #{index + 1}</h3>
-
-                <p className="text-sm text-muted-foreground">
-                  Add details about your professional experience
-                </p>
-              </div>
-
-              {index > 0 && (
-                <button
-                  type="button"
-                  onClick={() => remove(index)}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Remove
-                </button>
-              )}
-            </div>
-
-            {/* Fields */}
+          <FieldArrayCard
+            index={index}
+            label="Experience"
+            subtitle="Add details about your professional experience"
+            onRemove={remove}
+          >
             <FieldGrid cols={2}>
               {jobInputFields.map(({ name, label, type }, fieldIndex) => (
                 <FormField
@@ -87,7 +71,7 @@ const WorkHistory = () => {
               ))}
             </FieldGrid>
 
-            {/* Current Job */}
+            {/* Currently Working */}
             <Controller
               name={`jobs.${index}.currentlyWorking`}
               control={form.control}
@@ -97,7 +81,6 @@ const WorkHistory = () => {
                     checked={field.value ?? false}
                     onCheckedChange={(checked) => field.onChange(checked)}
                   />
-
                   <FieldLabel>I currently work here</FieldLabel>
                 </Field>
               )}
@@ -112,7 +95,6 @@ const WorkHistory = () => {
                   <FieldLabel htmlFor={`description-${index}`}>
                     Responsibilities & Achievements
                   </FieldLabel>
-
                   <Textarea
                     {...field}
                     id={`description-${index}`}
@@ -120,14 +102,13 @@ const WorkHistory = () => {
                     placeholder="Describe your responsibilities, achievements, technologies used, and impact..."
                     aria-invalid={fieldState.invalid}
                   />
-
                   {fieldState.error && (
                     <FieldError errors={[fieldState.error]} />
                   )}
                 </Field>
               )}
             />
-          </div>
+          </FieldArrayCard>
         )}
       />
     </FormStepLayout>

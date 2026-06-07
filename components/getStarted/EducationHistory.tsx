@@ -18,6 +18,7 @@ import { FormFieldArray } from "./FormFieldArray";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
 import { FormSection } from "./FormSection";
+import { FieldArrayCard } from "./FieldArrayCard";
 
 const EducationHistory = () => {
   const { prevStep, setData, data } = useWizardFormContext();
@@ -66,29 +67,12 @@ const EducationHistory = () => {
         addLabel="Add Education"
         defaultItem={defaultEducation}
         renderItem={(index, remove) => (
-          <div className="rounded-2xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm flex flex-col gap-6">
-            {/* Card Header */}
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-semibold">Education #{index + 1}</h3>
-
-                <p className="text-sm text-muted-foreground">
-                  Academic qualification details
-                </p>
-              </div>
-
-              {index > 0 && (
-                <button
-                  type="button"
-                  onClick={() => remove(index)}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Remove
-                </button>
-              )}
-            </div>
-
-            {/* Fields */}
+          <FieldArrayCard
+            index={index}
+            label="Education"
+            subtitle="Academic qualification details"
+            onRemove={remove}
+          >
             <FieldGrid cols={2}>
               {educationInputFields.map(({ name, label, type }, fieldIndex) => (
                 <FormField
@@ -96,16 +80,14 @@ const EducationHistory = () => {
                   name={`education.${index}.${String(name)}` as const}
                   label={label}
                   control={form.control}
-                  inputProps={{
-                    type,
-                    placeholder: label,
-                  }}
+                  inputProps={{ type, placeholder: label }}
                 />
               ))}
             </FieldGrid>
-          </div>
+          </FieldArrayCard>
         )}
       />
+
     </FormStepLayout>
   );
 };

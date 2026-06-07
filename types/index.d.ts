@@ -180,3 +180,11 @@ type FormSectionProps = {
   title: string;
   description: string;
 };
+
+type FieldArrayCardProps = {
+  index: number;
+  label: string;
+  subtitle: string;
+  onRemove: (index: number) => void;
+  children: React.ReactNode;
+}
