@@ -10,7 +10,7 @@ const WizardForm: FunctionComponent<typesforWizardForm> = ({
   const progress = (currentStep / Steps.length) * 100;
 
   return (
-    <div className="mx-auto w-full max-w-5xl flex flex-col gap-12">
+    <div className="mx-auto w-full max-w-5xl flex flex-col gap-12 px-4 sm:px-6 lg:px-8 xl:px-0 max-md:p-4">
       <div className="flex flex-col gap-10">
         {/* Header */}
         <div className="flex flex-col gap-4">
@@ -34,7 +34,7 @@ const WizardForm: FunctionComponent<typesforWizardForm> = ({
         </div>
 
         {/* Stepper */}
-        <div>
+        <div className="max-md:hidden">
           <div className="flex items-center justify-between">
             {Steps.map((_, index) => {
               const stepNumber = index + 1;

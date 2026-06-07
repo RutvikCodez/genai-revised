@@ -43,7 +43,7 @@ const ContactInformation = () => {
       onBack={prevStep}
     >
       <span>Contact</span>
-      <FieldGrid>
+      <FieldGrid className="max-md:flex-col max-md:flex max-md:gap-5">
         {contactFields.map(({ name, label, type }, index) => (
           <FormField
             key={index}
@@ -56,7 +56,7 @@ const ContactInformation = () => {
       </FieldGrid>
 
       <span>Address</span>
-      <FieldGrid>
+      <FieldGrid className="max-md:flex-col max-md:flex max-md:gap-5">
         {addressFields.map(({ name, label, type }, index) => (
           <FormField
             key={index}

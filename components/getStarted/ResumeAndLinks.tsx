@@ -65,7 +65,7 @@ const ResumeAndLinks = () => {
       />
 
       <span>Websites</span>
-      <FieldGrid>
+      <FieldGrid className="max-md:flex-col max-md:flex max-md:gap-5">
         {websiteFields.map(({ name, label }, index) => (
           <FormField
             key={index}

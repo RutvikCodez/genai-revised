@@ -46,9 +46,9 @@ const InformationCardWrapper = ({
             </div>
           </div>
           {/* Actions */}
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="flex  gap-3">
             <Button
-              className="group h-11 rounded-xl text-sm font-semibold"
+              className="group h-11 rounded-xl text-sm font-semibold max-md:w-full"
               onClick={() => {
                 nextStep();
               }}
@@ -59,7 +59,7 @@ const InformationCardWrapper = ({
 
             <Button
               variant="outline"
-              className="h-11 rounded-xl text-sm font-semibold"
+              className="h-11 rounded-xl text-sm font-semibold max-md:w-full"
               onClick={() => {
                 jumpToStep(4);
               }}

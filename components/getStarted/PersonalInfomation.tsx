@@ -32,7 +32,7 @@ const PersonalInfomation = () => {
       onSubmit={form.handleSubmit(onSubmit)}
     >
       <span>Legal Name</span>
-      <FieldGrid>
+      <FieldGrid className="max-md:flex-col max-md:flex max-md:gap-5">
         {(["firstName", "lastName"] as const).map((name) => (
           <FormField
             key={name}

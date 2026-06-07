@@ -52,7 +52,7 @@ const WorkHistory = () => {
                 Remove
               </button>
             </div>
-            <FieldGrid>
+            <FieldGrid className="max-md:flex-col max-md:flex max-md:gap-5">
               {jobInputFields.map(({ name, label, type }, fieldIndex) => (
                 <FormField
                   key={fieldIndex}

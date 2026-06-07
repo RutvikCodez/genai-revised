@@ -25,6 +25,7 @@ const EducationHistory = () => {
 
   const onSubmit = (data: z.infer<typeof educationHistoryFormSchema>) => {
     setData((prev) => ({ ...prev, ...data }));
+    
   };
 
   return (
@@ -52,7 +53,7 @@ const EducationHistory = () => {
                 Remove
               </button>
             </div>
-            <FieldGrid>
+            <FieldGrid className="max-md:flex-col max-md:flex max-md:gap-5">
               {educationInputFields.map(({ name, label, type }, fieldIndex) => (
                 <FormField
                   key={fieldIndex}
