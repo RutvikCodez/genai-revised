@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { Field, FieldError, FieldGroup, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
-import { CircleUserRound } from "lucide-react";
+import { SquareUserRound } from "lucide-react";
 import { Button } from "../ui/button";
 import { useWizardFormContext } from "@/app/context/WizardFormContext";
 
@@ -108,8 +108,8 @@ const ContactInformation = () => {
       <div className="relative flex flex-col  gap-5 p-8 md:p-10">
         <CardHeader>
           <CardTitle className="flex gap-2 items-center">
-            <CircleUserRound />
-            Personal Information
+            <SquareUserRound />
+            Contact Information
           </CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-5">
@@ -119,7 +119,7 @@ const ContactInformation = () => {
             className="flex flex-col gap-5"
           >
             <FieldGroup className="grid grid-cols-2 w-full gap-10">
-              {fields.slice(0,2).map(({ name, label, type }) => (
+              {fields.slice(0, 2).map(({ name, label, type }) => (
                 <Controller
                   key={name}
                   name={name}

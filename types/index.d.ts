@@ -84,9 +84,31 @@ type WizardFormData = {
 
   // Address Information
   addressLine1?: string;
-  addressLine2?: string; // optional
+  addressLine2?: string;
   city?: string;
   state?: string;
   country?: string;
   postalCode?: string;
+
+  // Resume & Profiles
+  resume?: File | null;
+
+  linkedin?: string;
+  x?: string;
+  github?: string;
+  portfolio?: string;
+
+  // Skills
+  skills?: string[];
+
+  // Work History (UPDATED)
+  jobs?: {
+    jobTitle: string;
+    company: string;
+    location: string;
+    startDate: string;
+    endDate?: string;
+    currentlyWorking?: boolean;
+    description: string;
+  }[];
 };

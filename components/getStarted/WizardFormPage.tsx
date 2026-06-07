@@ -10,7 +10,7 @@ export const WizardFormPage = ({
   const { currentStep } = useWizardFormContext();
 
 
-  return <WizardForm currentStep={currentStep} Steps={wizardSteps} />;
+  return <WizardForm currentStep={7} Steps={wizardSteps} />;
 };
 
 
