@@ -11,6 +11,7 @@ import { Button } from "../ui/button";
 import { useWizardFormContext } from "@/app/context/WizardFormContext";
 
 const GetStartedFormWrapper = () => {
+  const { nextStep, setData, data } = useWizardFormContext();
   const formSchema = z.object({
     firstName: z.string().min(2, "First name must be at least 2 characters"),
     lastName: z.string().min(2, "Last name must be at least 2 characters"),
@@ -19,8 +20,8 @@ const GetStartedFormWrapper = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      firstName: data?.firstName ?? "",
+      lastName: data?.lastName ?? "",
     },
   });
 
@@ -34,8 +35,6 @@ const GetStartedFormWrapper = () => {
       label: "Last Name",
     },
   ];
-
-  const { nextStep, setData } = useWizardFormContext();
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     setData((prev) => ({ ...prev, ...data }));

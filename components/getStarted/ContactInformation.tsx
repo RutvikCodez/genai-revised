@@ -39,17 +39,19 @@ const ContactInformation = () => {
       .max(10, "Postal code is too long"),
   });
 
+  const { nextStep, setData, data, prevStep } = useWizardFormContext();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      phone: "",
-      addressLine1: "",
-      addressLine2: "",
-      city: "",
-      state: "",
-      country: "",
-      postalCode: "",
+      email: data?.email ?? "",
+      phone: data?.phone ?? "",
+      addressLine1: data?.addressLine1 ?? "",
+      addressLine2: data?.addressLine2 ?? "",
+      city: data?.city ?? "",
+      state: data?.state ?? "",
+      country: data?.country ?? "",
+      postalCode: data?.postalCode ?? "",
     },
   });
 
@@ -95,8 +97,6 @@ const ContactInformation = () => {
       type: "text",
     },
   ];
-
-  const { nextStep, setData } = useWizardFormContext();
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     setData((prev) => ({ ...prev, ...data }));
@@ -167,7 +167,12 @@ const ContactInformation = () => {
                 />
               ))}
             </FieldGroup>
-            <Button type="submit">Next</Button>
+            <div className="grid grid-cols-2 gap-10 w-full">
+              <Button type="button" onClick={() => prevStep()} variant={"secondary"}>
+                Back
+              </Button>
+              <Button type="submit">Next</Button>
+            </div>
           </form>
         </CardContent>
       </div>

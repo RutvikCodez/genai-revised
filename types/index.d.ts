@@ -14,7 +14,7 @@ type FeatureCardProps = {
   gradient?: string;
   className?: string;
 };
-
+      
 type TestimonialCardProps = {
   quote: string;
   author: string;
@@ -101,7 +101,7 @@ type WizardFormData = {
   // Skills
   skills?: string[];
 
-  // Work History (UPDATED)
+  // Work History
   jobs?: {
     jobTitle: string;
     company: string;
@@ -110,5 +110,15 @@ type WizardFormData = {
     endDate?: string;
     currentlyWorking?: boolean;
     description: string;
+  }[];
+
+  // Education
+  education?: {
+    school: string;
+    degree: string;
+    major: string;
+    gpa?: string;
+    startDate: string;
+    endDate?: string;
   }[];
 };

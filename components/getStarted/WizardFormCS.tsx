@@ -5,6 +5,7 @@ import GetStartedFormWrapper from "./GetStartedFormWrapper";
 import ContactInformation from "./ContactInformation";
 import ResumeAndLinks from "./ResumeAndLinks";
 import WorkHistory from "./WorkHistory";
+import EducationHistory from "./EducationHistory";
 
 const WizardFormCS = () => {
   const steps: WizardSteps[] = [
@@ -23,6 +24,9 @@ const WizardFormCS = () => {
     },
     {
       element: <WorkHistory />,
+    },
+    {
+      element: <EducationHistory />,
     },
   ];
 

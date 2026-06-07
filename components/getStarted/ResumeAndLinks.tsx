@@ -58,16 +58,17 @@ const ResumeAndLinks = () => {
 
   const [input, setInput] = useState("");
 
+  const { nextStep, setData, data, prevStep } = useWizardFormContext();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      //   resume: null,
-      linkedin: "",
-      x: "",
-      github: "",
-      portfolio: "",
+      resume: data?.resume ?? undefined,
+      linkedin: data?.linkedin ?? "",
+      x: data?.x ?? "",
+      github: data?.github ?? "",
+      portfolio: data?.portfolio ?? "",
 
-      skills: [],
+      skills: data?.skills ?? [],
     },
   });
 
@@ -90,15 +91,12 @@ const ResumeAndLinks = () => {
     },
   ];
 
-  const { nextStep, setData, data } = useWizardFormContext();
-
   const onSubmit = (value: z.infer<typeof formSchema>) => {
     console.log("hello");
-    
 
     setData((prev) => ({ ...prev, ...value }));
     console.log(data);
-    
+
     nextStep();
   };
 
@@ -236,7 +234,16 @@ const ResumeAndLinks = () => {
                 }}
               />
             </FieldGroup>
-            <Button type="submit">Next</Button>
+            <div className="grid grid-cols-2 gap-10 w-full">
+              <Button
+                type="button"
+                onClick={() => prevStep()}
+                variant={"secondary"}
+              >
+                Back
+              </Button>
+              <Button type="submit">Next</Button>
+            </div>
           </form>
         </CardContent>
       </div>
