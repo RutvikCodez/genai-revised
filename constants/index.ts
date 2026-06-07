@@ -438,3 +438,19 @@ export const gridColsMap: Record<number, string> = {
   3: "grid-cols-1 md:grid-cols-3",
   4: "grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
 };
+
+
+export const sections = [
+  {
+    title: "Contact Details",
+    description:
+      "We'll use this information to communicate with you and verify your profile.",
+    fields: contactFields,
+  },
+  {
+    title: "Address Information",
+    description:
+      "Provide your current residential address for profile completion.",
+    fields: addressFields,
+  },
+];

@@ -4,11 +4,7 @@ import { useWizardFormContext } from "@/app/context/WizardFormContext";
 import { FormStepLayout } from "./FormStepLayout";
 import { FieldGrid } from "./FieldGrid";
 import { FormField } from "./FormField";
-import {
-  addressFields,
-  contactFields,
-  contactInformationFormSchema,
-} from "@/constants";
+import { contactInformationFormSchema, sections } from "@/constants";
 import { FormSection } from "./FormSection";
 import { useWizardStep } from "../../app/hooks/useWizardStepForm";
 
@@ -37,54 +33,32 @@ const ContactInformation = () => {
       onSubmit={onSubmit}
       onBack={prevStep}
     >
-      {/* Contact Section */}
-      <section className="flex flex-col gap-5">
-        <FormSection
-          title="Contact Details"
-          description="We'll use this information to communicate with you and verify your profile."
-        />
+      {sections.map(({ title, description, fields }, sectionIndex) => (
+        <div key={title}>
+          <section className="flex flex-col gap-5">
+            <FormSection title={title} description={description} />
 
-        <FieldGrid cols={2}>
-          {contactFields.map(({ name, label, type }, index) => (
-            <FormField
-              key={index}
-              name={name}
-              label={label}
-              control={form.control}
-              inputProps={{
-                type,
-                placeholder: label,
-              }}
-            />
-          ))}
-        </FieldGrid>
-      </section>
+            <FieldGrid cols={2}>
+              {fields.map(({ name, label, type }, index) => (
+                <FormField
+                  key={index}
+                  name={name}
+                  label={label}
+                  control={form.control}
+                  inputProps={{
+                    type,
+                    placeholder: label,
+                  }}
+                />
+              ))}
+            </FieldGrid>
+          </section>
 
-      {/* Divider */}
-      <div className="h-px w-full bg-border" />
-
-      {/* Address Section */}
-      <section className="flex flex-col gap-5">
-        <FormSection
-          title="Address Information"
-          description="Provide your current residential address for profile completion."
-        />
-
-        <FieldGrid cols={2}>
-          {addressFields.map(({ name, label, type }, index) => (
-            <FormField
-              key={index}
-              name={name}
-              label={label}
-              control={form.control}
-              inputProps={{
-                type,
-                placeholder: label,
-              }}
-            />
-          ))}
-        </FieldGrid>
-      </section>
+          {sectionIndex < sections.length - 1 && (
+            <div className="h-px w-full bg-border my-6" />
+          )}
+        </div>
+      ))}
     </FormStepLayout>
   );
 };
