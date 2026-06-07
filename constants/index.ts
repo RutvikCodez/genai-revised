@@ -313,3 +313,54 @@ export const addressFields: AdressFieldsType[] = [
   { name: "country", label: "Country", type: "text" },
   { name: "postalCode", label: "Postal Code", type: "text" },
 ];
+
+export  const resumeFormSchema = z.object({
+    // Resume (PDF only)
+    resume: z.custom<File>(
+      (val) => val instanceof File && val.type === "application/pdf",
+      { message: "Please upload a valid PDF file" },
+    ),
+
+    // Optional links (must be valid URLs if provided)
+    linkedin: z
+      .string()
+      .trim()
+      .url("Please enter a valid LinkedIn URL")
+      .optional()
+      .or(z.literal("")),
+
+    x: z
+      .string()
+      .trim()
+      .url("Please enter a valid X (Twitter) URL")
+      .optional()
+      .or(z.literal("")),
+
+    github: z
+      .string()
+      .trim()
+      .url("Please enter a valid GitHub URL")
+      .optional()
+      .or(z.literal("")),
+
+    portfolio: z
+      .string()
+      .trim()
+      .url("Please enter a valid portfolio URL")
+      .optional()
+      .or(z.literal("")),
+
+    // Skills (max 25)
+    skills: z
+      .array(z.string().min(1, "Skill cannot be empty"))
+      .max(25, "You can add up to 25 skills only")
+      .optional(),
+  });
+
+  export const websiteFields: AdressFieldsType[] = [
+      { name: "linkedin", label: "LinkedIn" },
+      { name: "x", label: "X (Twitter)" },
+      { name: "github", label: "GitHub" },
+      { name: "portfolio", label: "Personal Portfolio" },
+    ];
+  

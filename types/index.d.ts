@@ -161,5 +161,5 @@ type FormValues = z.infer<typeof formSchema>;
 type AdressFieldsType = {
   name: keyof FormValues;
   label: string;
-  type: string;
+  type?: string;
 };
