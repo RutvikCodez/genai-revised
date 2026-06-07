@@ -1,8 +1,10 @@
+import { memo } from "react";
 import { Controller, FieldValues } from "react-hook-form";
+
 import { Field, FieldError, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
 
-export function FormField<T extends FieldValues>({
+function FormFieldBase<T extends FieldValues>({
   name,
   label,
   control,
@@ -13,27 +15,44 @@ export function FormField<T extends FieldValues>({
     <Controller
       name={name}
       control={control}
-      render={({ field, fieldState }) => (
-        <Field data-invalid={fieldState.invalid}>
-          <FieldLabel htmlFor={name}>{label}</FieldLabel>
-          {RenderInput ? (
-            <RenderInput
-              {...field}
-              {...inputProps}
-              invalid={fieldState.invalid}
-            />
-          ) : (
-            <Input
-              {...field}
-              {...inputProps}
-              id={name}
-              aria-invalid={fieldState.invalid}
-              autoComplete="off"
-            />
-          )}
-          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-        </Field>
-      )}
+      render={({ field, fieldState }) => {
+        const isInvalid = !!fieldState.error;
+
+        return (
+          <Field data-invalid={isInvalid} className="space-y-2">
+            {/* Label */}
+            <FieldLabel htmlFor={name} className="text-sm font-medium">
+              {label}
+            </FieldLabel>
+
+            {/* Input */}
+            {RenderInput ? (
+              <RenderInput
+                {...field}
+                {...inputProps}
+                id={name}
+                invalid={isInvalid}
+              />
+            ) : (
+              <Input
+                {...field}
+                {...inputProps}
+                id={name}
+                autoComplete="off"
+                aria-invalid={isInvalid}
+                className="h-11 rounded-xl border-border/60 bg-background/60 backdrop-blur-sm transition-all focus:border-primary focus:ring-0"
+              />
+            )}
+
+            {/* Error */}
+            {isInvalid && fieldState.error && (
+              <FieldError errors={[fieldState.error]} />
+            )}
+          </Field>
+        );
+      }}
     />
   );
 }
+
+export const FormField = memo(FormFieldBase) as typeof FormFieldBase;

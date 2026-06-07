@@ -431,3 +431,10 @@ export const educationInputFields: EducationHistoryFieldsType[] = [
   { name: "startDate", label: "Start Date", type: "date" },
   { name: "endDate", label: "End Date", type: "date" },
 ];
+
+export const gridColsMap: Record<number, string> = {
+  1: "grid-cols-1",
+  2: "grid-cols-1 md:grid-cols-2",
+  3: "grid-cols-1 md:grid-cols-3",
+  4: "grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
+};
