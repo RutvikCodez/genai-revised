@@ -1,23 +1,14 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CircleUserRound } from "lucide-react";
+import { SectionCard } from "./SectionCard";
+import { InfoRow } from "./InfoRow";
 
-const PersonalInformationCard = ({ firstName, lastName }: WizardFormData) => {
-  return (
-    <Card>
-      <CardHeader className="text-center flex w-full justify-center items-center">
-        <CardTitle className="flex gap-2 items-center">
-          <CircleUserRound />
-          Personal Information
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="flex w-full justify-between">
-        <span>Legal Name:</span>
-        <span>
-          {firstName} {lastName}
-        </span>
-      </CardContent>
-    </Card>
-  );
-};
-
-export default PersonalInformationCard;
+export const PersonalInformationCard = ({
+  firstName,
+  lastName,
+}: WizardFormData) => (
+  <SectionCard icon={CircleUserRound} title="Personal Information">
+    <InfoRow label="Legal Name">
+      {firstName} {lastName}
+    </InfoRow>
+  </SectionCard>
+);

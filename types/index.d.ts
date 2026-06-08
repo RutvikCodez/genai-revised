@@ -131,7 +131,7 @@ type FormFieldProps<T extends FieldValues> = {
   control: Control<T>;
   inputProps?: Omit<InputProps, "name">;
   renderInput?: ComponentType<InputProps & { invalid: boolean }>;
-  disabled?: boolean
+  disabled?: boolean;
 };
 
 type FormStepLayoutProps = {
@@ -250,7 +250,7 @@ type FieldArrayProps<T extends FieldValues> = {
   defaultItem: RHFFieldArray<T, ArrayPath<T>>;
   addLabel?: string;
   renderExtra?: (index: number) => React.ReactNode;
-  disabled?: boolean
+  disabled?: boolean;
 };
 
 type StepConfig<T extends FieldValues> = {
@@ -281,3 +281,27 @@ type JobUI = {
   startDate: Date;
   endDate: Date | null;
 };
+
+type SectionCardProps = {
+  icon: LucideIcon;
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+};
+
+type InfoRowProps = {
+  label: string;
+  children: React.ReactNode;
+};
+
+
+type MetaItemProps = {
+  icon: LucideIcon;
+  children: React.ReactNode;
+}
+
+type DateRangeProps = {
+  startDate: Date;
+  endDate?: Date | null | undefined;
+  currentlyWorking?: boolean;
+}
