@@ -323,3 +323,16 @@ type InfoCardProps = {
   title: string;
   fields: InfoField[];
 };
+
+type HistoryItem = {
+  title: string;
+  meta: { icon: React.ElementType; value: React.ReactNode }[];
+  description?: React.ReactNode;
+};
+
+type HistoryCardProps = {
+  icon: React.ElementType;
+  heading: string;
+  items?: HistoryItem[];
+  className?: string;
+};
