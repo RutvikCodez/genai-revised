@@ -16,9 +16,6 @@ export default createStep(
     getDefaults: (d) => ({
       education: d.education?.length ? d.education : [defaultEducation],
     }),
-    submitLabel: (s) => (s ? "Submitting..." : "Complete Profile"),
-    advance: false,
-    onAfterSubmit: async (values) => console.log(values),
   },
   (form) => (
     <FieldArray

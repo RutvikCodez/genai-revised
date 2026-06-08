@@ -1,11 +1,14 @@
 import { auth } from "@/auth";
-import WizardFormCS from "@/components/getStarted/WizardFormCS";
 import prisma from "@/lib/prisma";
 import { redirect } from "next/navigation";
 
-const page = async () => {
+const AuthCallbackPage = async () => {
   const session = await auth();
-  if (!session?.user?.id) redirect("/signin");
+
+  if (!session?.user?.id) {
+    redirect("/signin");
+  }
+
   const profile = await prisma.candidateProfile?.findUnique({
     where: {
       userId: session.user.id,
@@ -14,8 +17,8 @@ const page = async () => {
       id: true,
     },
   });
-  if (profile) redirect("/dashboard");
-  return <WizardFormCS />;
+
+  redirect(profile ? "/dashboard" : "/get-started");
 };
 
-export default page;
+export default AuthCallbackPage;

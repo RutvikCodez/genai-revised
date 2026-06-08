@@ -6,6 +6,7 @@ import ResumeAndLinks from "./ResumeAndLinks";
 import WorkHistory from "./WorkHistory";
 import EducationHistory from "./EducationHistory";
 import PersonalInfomation from "./PersonalInfomation";
+import SubmitProfile from "./SubmitProfile";
 
 const WizardFormCS = () => {
   const steps: WizardSteps[] = [
@@ -27,6 +28,9 @@ const WizardFormCS = () => {
     },
     {
       element: <EducationHistory />,
+    },
+    {
+      element: <SubmitProfile />,
     },
   ];
 
