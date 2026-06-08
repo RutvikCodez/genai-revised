@@ -1,17 +1,19 @@
 "use server";
 import { auth } from "@/auth";
 import prisma from "./prisma";
-
-
+import { uploadToImageKit } from "./imagekit";
 
 export async function createCandidateProfile(data: WizardFormData | null) {
   const session = await auth();
-
+  let resumeUrl;
+  if (data?.resume) {
+    resumeUrl = await uploadToImageKit(data?.resume);
+  }
   if (!session?.user?.id) {
     throw new Error("Unauthorized");
   }
 
-  return prisma.candidateProfile?.create({
+  return prisma.candidateProfile.create({
     data: {
       userId: session.user.id,
 
@@ -32,6 +34,7 @@ export async function createCandidateProfile(data: WizardFormData | null) {
       x: data?.x,
       github: data?.github,
       portfolio: data?.portfolio,
+      resumeUrl: resumeUrl,
 
       skills: data?.skills ?? [],
 
