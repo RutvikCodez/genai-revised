@@ -305,3 +305,10 @@ type DateRangeProps = {
   endDate?: Date | null | undefined;
   currentlyWorking?: boolean;
 }
+
+type DataRowProps = {
+  label?: string;           
+  icon?: React.ElementType; 
+  children: React.ReactNode;
+  justify?: boolean;        
+};

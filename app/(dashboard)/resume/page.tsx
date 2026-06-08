@@ -1,9 +1,9 @@
 import { auth } from "@/auth";
-import ContactInformationCard from "@/components/dashboard/resume/ContactInformationCard";
-import EducationHistoryCard from "@/components/dashboard/resume/EducationHistoryCard";
-import PersonalInformationCard from "@/components/dashboard/resume/PersonalInformationCard";
-import WebsiteAndSkills from "@/components/dashboard/resume/WebsiteAndSkills";
-import WorkHistoryCard from "@/components/dashboard/resume/WorkHistoryCard";
+import { ContactInformationCard } from "@/components/dashboard/resume/ContactInformationCard";
+import { EducationHistoryCard } from "@/components/dashboard/resume/EducationHistoryCard";
+import { PersonalInformationCard } from "@/components/dashboard/resume/PersonalInformationCard";
+import { WebsiteAndSkills } from "@/components/dashboard/resume/WebsiteAndSkills";
+import { WorkHistoryCard } from "@/components/dashboard/resume/WorkHistoryCard";
 import prisma from "@/lib/prisma";
 
 const Resume = async () => {

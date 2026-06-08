@@ -1,14 +1,14 @@
 import { CircleUserRound } from "lucide-react";
 import { SectionCard } from "./SectionCard";
-import { InfoRow } from "./InfoRow";
+import { DataRow } from "./DataRow";
 
 export const PersonalInformationCard = ({
   firstName,
   lastName,
 }: WizardFormData) => (
   <SectionCard icon={CircleUserRound} title="Personal Information">
-    <InfoRow label="Legal Name">
+    <DataRow label="Legal Name" justify>
       {firstName} {lastName}
-    </InfoRow>
+    </DataRow>
   </SectionCard>
 );

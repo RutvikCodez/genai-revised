@@ -1,6 +1,6 @@
 import { SquareUserRound } from "lucide-react";
 import { SectionCard } from "./SectionCard";
-import { InfoRow } from "./InfoRow";
+import { DataRow } from "./DataRow"; 
 
 export const ContactInformationCard = ({
   addressLine1,
@@ -9,10 +9,10 @@ export const ContactInformationCard = ({
   email,
 }: WizardFormData) => (
   <SectionCard icon={SquareUserRound} title="Contact Information">
-    <InfoRow label="Address">
+    <DataRow label="Address" justify> 
       {addressLine1} {addressLine2}
-    </InfoRow>
-    <InfoRow label="Phone">{phone}</InfoRow>
-    <InfoRow label="Email">{email}</InfoRow>
+    </DataRow>
+    <DataRow label="Phone" justify>{phone}</DataRow>
+    <DataRow label="Email" justify>{email}</DataRow>
   </SectionCard>
 );
