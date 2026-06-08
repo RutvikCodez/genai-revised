@@ -1,5 +1,4 @@
-import { auth } from "@/auth";
-import prisma from "@/lib/prisma";
+import { requireProfile } from "@/lib/actions";
 import { redirect } from "next/navigation";
 
 const DashboardLayout = async ({
@@ -7,17 +6,11 @@ const DashboardLayout = async ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const session = await auth();
-  if (!session?.user?.id) redirect("/signin");
-  const profile = await prisma.candidateProfile?.findUnique({
-    where: {
-      userId: session.user.id,
-    },
-    select: {
-      id: true,
-    },
-  });
-  if (!profile) redirect("/get-started");
+  const { profile } = await requireProfile();
+
+  if (!profile) {
+    return redirect("/get-started");
+  }
   return children;
 };
 

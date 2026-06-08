@@ -1,22 +1,8 @@
-import { auth } from "@/auth";
-import prisma from "@/lib/prisma";
+import { requireProfile } from "@/lib/actions";
 import { redirect } from "next/navigation";
 
 const AuthCallbackPage = async () => {
-  const session = await auth();
-
-  if (!session?.user?.id) {
-    redirect("/signin");
-  }
-
-  const profile = await prisma.candidateProfile?.findUnique({
-    where: {
-      userId: session.user.id,
-    },
-    select: {
-      id: true,
-    },
-  });
+  const { profile } = await requireProfile();
 
   redirect(profile ? "/dashboard" : "/get-started");
 };

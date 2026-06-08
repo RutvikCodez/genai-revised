@@ -2,6 +2,7 @@
 import { auth } from "@/auth";
 import prisma from "./prisma";
 import { uploadToImageKit } from "./imagekit";
+import { redirect } from "next/navigation";
 
 export async function createCandidateProfile(data: WizardFormData | null) {
   const session = await auth();
@@ -65,3 +66,39 @@ export async function createCandidateProfile(data: WizardFormData | null) {
     },
   });
 }
+
+
+export const requireProfile = async (options?: {
+  redirectToSignin?: string;
+  redirectToGetStarted?: string;
+  redirectToDashboard?: string;
+}) => {
+  const {
+    redirectToSignin = "/signin",
+    redirectToGetStarted = "/get-started",
+    redirectToDashboard = "/dashboard",
+  } = options || {};
+
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    redirect(redirectToSignin);
+  }
+
+  const profile = await prisma.candidateProfile.findUnique({
+    where: {
+      userId: session.user.id,
+    },
+    select: { id: true },
+  });
+
+  return {
+    session,
+    profile,
+    redirects: {
+      redirectToSignin,
+      redirectToGetStarted,
+      redirectToDashboard,
+    },
+  };
+};

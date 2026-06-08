@@ -1,5 +1,4 @@
-import { auth } from "@/auth";
-import prisma from "@/lib/prisma";
+import { requireProfile } from "@/lib/actions";
 import { redirect } from "next/navigation";
 
 const AuthLayout = async ({
@@ -7,22 +6,13 @@ const AuthLayout = async ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const session = await auth();
-  if (session?.user?.email) {
-    const profile = await prisma.candidateProfile.findUnique({
-      where: {
-        userId: session.user.id,
-      },
-      select: {
-        id: true,
-      },
-    });
-    if (profile) {
-      redirect("/dashboard");
-    }
-    redirect("/get-started");
+  const { session, profile } = await requireProfile();
+
+  if (session?.user?.id) {
+    redirect(profile ? "/dashboard" : "/get-started");
   }
-  return children;  
+
+  return children;
 };
 
 export default AuthLayout;

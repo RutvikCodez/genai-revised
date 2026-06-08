@@ -1,20 +1,13 @@
-import { auth } from "@/auth";
 import WizardFormCS from "@/components/getStarted/WizardFormCS";
-import prisma from "@/lib/prisma";
+import { requireProfile } from "@/lib/actions";
 import { redirect } from "next/navigation";
 
 const page = async () => {
-  const session = await auth();
-  if (!session?.user?.id) redirect("/signin");
-  const profile = await prisma.candidateProfile?.findUnique({
-    where: {
-      userId: session.user.id,
-    },
-    select: {
-      id: true,
-    },
-  });
-  if (profile) redirect("/dashboard");
+  const { profile } = await requireProfile();
+
+  if (profile) {
+    return redirect("/dashboard");
+  }
   return <WizardFormCS />;
 };
 
