@@ -262,3 +262,22 @@ type StepConfig<T extends FieldValues> = {
   advance?: boolean;
   onAfterSubmit?: (values: T) => Promise<void>;
 };
+
+type EducationUI = {
+  school: string;
+  degree: string;
+  major: string;
+  gpa: string | null;
+  startDate: Date;
+  endDate: Date | null;
+};
+
+type JobUI = {
+  jobTitle: string;
+  company: string;
+  location: string;
+  description: string;
+  currentlyWorking: boolean;
+  startDate: Date;
+  endDate: Date | null;
+};
