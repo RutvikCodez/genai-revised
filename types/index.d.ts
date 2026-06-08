@@ -312,3 +312,14 @@ type DataRowProps = {
   children: React.ReactNode;
   justify?: boolean;        
 };
+
+type InfoField = {
+  label: string;
+  value: React.ReactNode;
+};
+
+type InfoCardProps = {
+  icon: React.ElementType;
+  title: string;
+  fields: InfoField[];
+};

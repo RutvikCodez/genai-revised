@@ -1,4 +1,3 @@
-import { CalendarDays } from "lucide-react";
 import { SectionCard } from "./SectionCard";
 import { DataRow } from "./DataRow";
 
