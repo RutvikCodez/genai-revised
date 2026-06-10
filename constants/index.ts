@@ -7,6 +7,9 @@ import {
   Zap,
   X,
   Mail,
+  BriefcaseBusiness,
+  Building2,
+  MapPin,
 } from "lucide-react";
 import z from "zod";
 
@@ -452,5 +455,33 @@ export const sections = [
     description:
       "Provide your current residential address for profile completion.",
     fields: addressFields,
+  },
+];
+
+export const JobDescriptionFormSchema = z.object({
+  jobTitle: z.string().min(2, "Job title is required"),
+  company: z.string().min(2, "Company name is required"),
+  location: z.string().optional(),
+  jobDescription: z.string().min(50, "Please provide a detailed description"),
+});
+
+export const JobDescriptionFields = [
+  {
+    name: "jobTitle" as const,
+    label: "Job Title",
+    placeholder: "Frontend Developer",
+    icon: BriefcaseBusiness,
+  },
+  {
+    name: "company" as const,
+    label: "Company",
+    placeholder: "Google",
+    icon: Building2,
+  },
+  {
+    name: "location" as const,
+    label: "Location",
+    placeholder: "Ahmedabad, Gujarat",
+    icon: MapPin,
   },
 ];

@@ -336,3 +336,9 @@ type HistoryCardProps = {
   items?: HistoryItem[];
   className?: string;
 };
+
+type TitleProps = {
+  title: string;
+  description: string;
+  children: React.ReactNode;
+}
