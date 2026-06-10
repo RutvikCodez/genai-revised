@@ -193,17 +193,6 @@ Return ONLY valid JSON. No markdown. No backticks. No extra fields. No explanati
 - If the company is well-known, incorporate specific public knowledge about them (culture, interview style, product focus) into the questions and answers.
 `;
 
-// export const generateInterview = async (
-//   resume: string,
-//   jobDescription: string,
-// ) => {
-//   const { text } = await generateText({
-//     model: google("gemini-2.5-flash-lite"),
-//     prompt: buildInterviewPrompt(resume, jobDescription),
-//   });
-//   return text;
-// };
-
 export const generateInterview = async (
   profileId: string,
   resume: string,
