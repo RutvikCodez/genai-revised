@@ -342,3 +342,28 @@ type TitleProps = {
   description: string;
   children: React.ReactNode;
 }
+
+type InterviewReport = {
+  title: string;
+  matchScore: number;
+  technicalQuestions: {
+    question: string;
+    intention: string;
+    answer: string;
+  }[];
+  behavioralQuestions: {
+    question: string;
+    intention: string;
+    answer: string;
+  }[];
+  skillGaps: {
+    skill: string;
+    severity: "low" | "medium" | "high";
+    impact?: string;
+  }[];
+  preparationPlan: {
+    day: number;
+    focus: string;
+    tasks: string[];
+  }[];
+};

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import WizardFormProvider from "./context/WizardFormContext";
+import { Toaster } from "@/components/ui/sonner";
 
 const fontSans = Outfit({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" className={`${fontSans.variable} h-full antialiased dark`}>
       <body className="min-h-full flex flex-col">
         <WizardFormProvider>{children}</WizardFormProvider>
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );

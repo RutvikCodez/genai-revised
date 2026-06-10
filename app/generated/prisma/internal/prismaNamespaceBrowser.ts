@@ -57,7 +57,12 @@ export const ModelName = {
   VerificationToken: 'VerificationToken',
   CandidateProfile: 'CandidateProfile',
   Job: 'Job',
-  Education: 'Education'
+  Education: 'Education',
+  InterviewReport: 'InterviewReport',
+  TechnicalQuestion: 'TechnicalQuestion',
+  BehavioralQuestion: 'BehavioralQuestion',
+  SkillGap: 'SkillGap',
+  PreparationDay: 'PreparationDay'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -181,6 +186,64 @@ export const EducationScalarFieldEnum = {
 } as const
 
 export type EducationScalarFieldEnum = (typeof EducationScalarFieldEnum)[keyof typeof EducationScalarFieldEnum]
+
+
+export const InterviewReportScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  jobDescription: 'jobDescription',
+  title: 'title',
+  matchScore: 'matchScore',
+  createdAt: 'createdAt'
+} as const
+
+export type InterviewReportScalarFieldEnum = (typeof InterviewReportScalarFieldEnum)[keyof typeof InterviewReportScalarFieldEnum]
+
+
+export const TechnicalQuestionScalarFieldEnum = {
+  id: 'id',
+  reportId: 'reportId',
+  question: 'question',
+  intention: 'intention',
+  answer: 'answer',
+  order: 'order'
+} as const
+
+export type TechnicalQuestionScalarFieldEnum = (typeof TechnicalQuestionScalarFieldEnum)[keyof typeof TechnicalQuestionScalarFieldEnum]
+
+
+export const BehavioralQuestionScalarFieldEnum = {
+  id: 'id',
+  reportId: 'reportId',
+  question: 'question',
+  intention: 'intention',
+  answer: 'answer',
+  order: 'order'
+} as const
+
+export type BehavioralQuestionScalarFieldEnum = (typeof BehavioralQuestionScalarFieldEnum)[keyof typeof BehavioralQuestionScalarFieldEnum]
+
+
+export const SkillGapScalarFieldEnum = {
+  id: 'id',
+  reportId: 'reportId',
+  skill: 'skill',
+  severity: 'severity',
+  impact: 'impact'
+} as const
+
+export type SkillGapScalarFieldEnum = (typeof SkillGapScalarFieldEnum)[keyof typeof SkillGapScalarFieldEnum]
+
+
+export const PreparationDayScalarFieldEnum = {
+  id: 'id',
+  reportId: 'reportId',
+  day: 'day',
+  focus: 'focus',
+  tasks: 'tasks'
+} as const
+
+export type PreparationDayScalarFieldEnum = (typeof PreparationDayScalarFieldEnum)[keyof typeof PreparationDayScalarFieldEnum]
 
 
 export const SortOrder = {

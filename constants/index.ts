@@ -459,10 +459,10 @@ export const sections = [
 ];
 
 export const JobDescriptionFormSchema = z.object({
-  jobTitle: z.string().min(2, "Job title is required"),
-  company: z.string().min(2, "Company name is required"),
+  jobTitle: z.string().min(2, "Job title is required").optional(),
+  company: z.string().min(2, "Company name is required").optional(),
   location: z.string().optional(),
-  jobDescription: z.string().min(50, "Please provide a detailed description"),
+  jobDescription: z.string().min(50, "Please provide a detailed description").optional(),
 });
 
 export const JobDescriptionFields = [

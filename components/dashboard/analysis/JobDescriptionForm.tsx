@@ -13,8 +13,18 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { JobDescriptionFields, JobDescriptionFormSchema } from "@/constants";
 import Title from "./Title";
+import pdfToText from "react-pdftotext";
+import { generateInterview } from "@/lib/actions";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
-const JobDescriptionForm = () => {
+const JobDescriptionForm = ({
+  resumeUrl,
+  profileId,
+}: {
+  resumeUrl: string | null | undefined;
+  profileId: string;
+}) => {
   const form = useForm<z.infer<typeof JobDescriptionFormSchema>>({
     resolver: zodResolver(JobDescriptionFormSchema),
     defaultValues: {
@@ -25,10 +35,38 @@ const JobDescriptionForm = () => {
     },
   });
 
+  const router = useRouter();
+
   const descriptionLength = form.watch("jobDescription")?.length ?? 0;
 
-  const onSubmit = (values: z.infer<typeof JobDescriptionFormSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof JobDescriptionFormSchema>) => {
+    if (!resumeUrl) return;
+
+    toast.promise(
+      async () => {
+        const response = await fetch(resumeUrl);
+        const blob = await response.blob();
+        const text = await pdfToText(blob);
+
+        const jobDescription = `
+      ${values.jobTitle}
+      ${values.company}
+      ${values.location}
+
+      ${values.jobDescription}
+      `;
+
+        await generateInterview(profileId, text, jobDescription);
+      },
+      {
+        loading: "Generating your interview report...",
+        success: () => {
+          router.push("/feedback");
+          return "Interview report generated successfully!";
+        },
+        error: "Failed to generate interview report. Please try again.",
+      },
+    );
   };
 
   return (

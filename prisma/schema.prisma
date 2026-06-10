@@ -101,9 +101,11 @@ model CandidateProfile {
 
   jobs      Job[]
   education Education[]
+  interviewReports InterviewReport[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
 }
 
 model Job {
@@ -142,4 +144,64 @@ model Education {
   endDate   DateTime?
 
   createdAt DateTime @default(now())
+}
+
+model InterviewReport {
+  id             String           @id @default(cuid())
+  profileId      String
+  profile        CandidateProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  jobDescription String
+  title          String
+  matchScore     Int
+
+  technicalQuestions  TechnicalQuestion[]
+  behavioralQuestions BehavioralQuestion[]
+  skillGaps           SkillGap[]
+  preparationDays     PreparationDay[]
+
+  createdAt DateTime @default(now())
+}
+
+model TechnicalQuestion {
+  id        String          @id @default(cuid())
+  reportId  String
+  report    InterviewReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  question  String
+  intention String
+  answer    String
+  order     Int             @default(0)
+}
+
+model BehavioralQuestion {
+  id        String          @id @default(cuid())
+  reportId  String
+  report    InterviewReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  question  String
+  intention String
+  answer    String
+  order     Int             @default(0)
+}
+
+model SkillGap {
+  id       String           @id @default(cuid())
+  reportId String
+  report   InterviewReport  @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  skill    String
+  severity SkillGapSeverity
+  impact   String?
+}
+
+model PreparationDay {
+  id       String          @id @default(cuid())
+  reportId String
+  report   InterviewReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  day      Int
+  focus    String
+  tasks    String[]
+}
+
+enum SkillGapSeverity {
+  low
+  medium
+  high
 }

@@ -52,3 +52,28 @@ export type Job = Prisma.JobModel
  * 
  */
 export type Education = Prisma.EducationModel
+/**
+ * Model InterviewReport
+ * 
+ */
+export type InterviewReport = Prisma.InterviewReportModel
+/**
+ * Model TechnicalQuestion
+ * 
+ */
+export type TechnicalQuestion = Prisma.TechnicalQuestionModel
+/**
+ * Model BehavioralQuestion
+ * 
+ */
+export type BehavioralQuestion = Prisma.BehavioralQuestionModel
+/**
+ * Model SkillGap
+ * 
+ */
+export type SkillGap = Prisma.SkillGapModel
+/**
+ * Model PreparationDay
+ * 
+ */
+export type PreparationDay = Prisma.PreparationDayModel

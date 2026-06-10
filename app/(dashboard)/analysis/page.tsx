@@ -1,6 +1,20 @@
+import { auth } from "@/auth";
 import JobDescriptionForm from "@/components/dashboard/analysis/JobDescriptionForm";
+import prisma from "@/lib/prisma";
 
-const page = () => {
+const page = async () => {
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return null;
+  }
+
+  const profile = await prisma.candidateProfile.findUnique({
+    where: { userId: session.user.id },
+  });
+
+  if (!profile) return null;
+
   return (
     <main className="mx-auto max-w-6xl flex flex-col gap-10 p-6 md:p-10 w-full">
       {/* Header */}
@@ -12,7 +26,10 @@ const page = () => {
           Add the job details you want to analyze against your resume.
         </p>
       </header>
-      <JobDescriptionForm />
+      <JobDescriptionForm
+        resumeUrl={profile?.resumeUrl}
+        profileId={profile?.id}
+      />
     </main>
   );
 };
