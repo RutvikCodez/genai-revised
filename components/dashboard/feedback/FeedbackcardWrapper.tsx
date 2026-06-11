@@ -1,8 +1,22 @@
-import { Flame, Hospital, ListCheck, TriangleAlert } from "lucide-react";
+import {
+  Flame,
+  Hospital,
+  ListCheck,
+  TriangleAlert,
+} from "lucide-react";
 import FeedbackCard from "./FeedbackCard";
+import { cn } from "@/lib/utils";
 
-const FeedbackcardWrapper = ({days,label,range,skillGap,skillGapLength,totalTask,totalquestion}:FeedbacCardWapperProps) => {
-     const stats = [
+const FeedbackcardWrapper = ({
+  days,
+  label,
+  range,
+  skillGap,
+  skillGapLength,
+  totalTask,
+  totalquestion,
+}: FeedbacCardWapperProps) => {
+  const stats = [
     {
       icon: Flame,
       headline: label,
@@ -28,10 +42,17 @@ const FeedbackcardWrapper = ({days,label,range,skillGap,skillGapLength,totalTask
       description: "Total to practise",
     },
   ];
+
   return (
-    <div className="w-full grid grid-cols-4 gap-10">
+    <section
+      className={cn(
+        "w-full grid gap-4",
+        "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+      )}
+    >
       {stats.map((item, i) => {
         const Icon = item.icon;
+
         return (
           <FeedbackCard
             key={i}
@@ -42,7 +63,7 @@ const FeedbackcardWrapper = ({days,label,range,skillGap,skillGapLength,totalTask
           />
         );
       })}
-    </div>
+    </section>
   );
 };
 

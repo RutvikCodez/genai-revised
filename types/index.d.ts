@@ -381,6 +381,7 @@ type FeedbackCardProps = {
   headline: string;
   title: string;
   description: string;
+  className?: string
 };
 
 type FeedbacCardWapperProps = {

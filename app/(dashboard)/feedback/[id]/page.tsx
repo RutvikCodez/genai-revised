@@ -42,7 +42,7 @@ const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
   const totalQuestions = technicalQuestions.length + behavioralQuestions.length;
 
   return (
-    <main className="mx-auto max-w-6xl flex flex-col gap-10 p-6 md:p-10 w-full">
+    <main className="mx-auto max-w-6xl flex flex-col gap-6 p-6 md:p-10 w-full">
       {/* Header */}
       <header className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold tracking-tight">
