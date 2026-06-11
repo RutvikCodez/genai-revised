@@ -382,3 +382,13 @@ type FeedbackCardProps = {
   title: string;
   description: string;
 };
+
+type FeedbacCardWapperProps = {
+  label: string
+  range: string
+  skillGapLength: string
+  skillGap: string
+  totalTask: string
+  days: number
+  totalquestion: string
+}

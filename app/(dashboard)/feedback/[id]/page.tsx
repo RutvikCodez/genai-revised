@@ -1,9 +1,8 @@
-import FeedbackCard from "@/components/dashboard/feedback/FeedbackCard";
+import FeedbackcardWrapper from "@/components/dashboard/feedback/FeedbackcardWrapper";
 import ScoreCard from "@/components/dashboard/feedback/ScoreCard";
 import { formatSkillGaps } from "@/lib/formatSkillGaps";
 import { getScoreFeedback } from "@/lib/getScoreFeedback";
 import prisma from "@/lib/prisma";
-import { Flame, Hospital, ListCheck, TriangleAlert } from "lucide-react";
 
 const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -40,7 +39,7 @@ const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const totalDays = preparationDays?.length || 0;
 
-  const totalQuestions = technicalQuestions.length + behavioralQuestions.length
+  const totalQuestions = technicalQuestions.length + behavioralQuestions.length;
 
   return (
     <main className="mx-auto max-w-6xl flex flex-col gap-10 p-6 md:p-10 w-full">
@@ -64,32 +63,15 @@ const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
         day={preparationDays.length}
       />
 
-      <div className="w-full grid grid-cols-4 gap-10">
-        <FeedbackCard
-          icon={Flame}
-          headline={label}
-          title={range}
-          description="Score range"
-        />
-        <FeedbackCard
-          icon={TriangleAlert}
-          headline="Skill gaps"
-          title={skillGaps.length.toString()}
-          description={formatSkillGaps(skillGaps)}
-        />
-        <FeedbackCard
-          icon={ListCheck}
-          headline="Prep tasks"
-          title={totalTasks.toString()}
-          description={`Across ${totalDays} days`}
-        />
-        <FeedbackCard
-          icon={Hospital}
-          headline="Questions"
-          title={totalQuestions.toString()}
-          description="Total to practise"
-        />
-      </div>
+      <FeedbackcardWrapper
+        label={label}
+        range={range}
+        skillGapLength={String(skillGaps.length)}
+        skillGap={formatSkillGaps(skillGaps)}
+        totalTask={String(totalTasks)}
+        days={totalDays}
+        totalquestion={String(totalQuestions)}
+      />
     </main>
   );
 };
