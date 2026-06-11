@@ -393,3 +393,9 @@ type FeedbacCardWapperProps = {
   days: number
   totalquestion: string
 }
+
+type FeedbackTabsProps = {
+   icon: Reactnode;
+   title: string
+   element: JSX.Element
+}

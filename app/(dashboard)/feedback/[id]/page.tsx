@@ -1,5 +1,7 @@
 import FeedbackcardWrapper from "@/components/dashboard/feedback/FeedbackcardWrapper";
+import FeedbackTabs from "@/components/dashboard/feedback/FeedbackTabs";
 import ScoreCard from "@/components/dashboard/feedback/ScoreCard";
+import TabsWrapper from "@/components/dashboard/feedback/TabsWrapper";
 import { formatSkillGaps } from "@/lib/formatSkillGaps";
 import { getScoreFeedback } from "@/lib/getScoreFeedback";
 import prisma from "@/lib/prisma";
@@ -72,6 +74,8 @@ const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
         days={totalDays}
         totalquestion={String(totalQuestions)}
       />
+
+      <TabsWrapper />
     </main>
   );
 };
