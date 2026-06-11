@@ -370,8 +370,15 @@ type InterviewReport = {
 type ScoreCardProps = {
   matchScore: number;
   jobTitle: string;
-  company: string
-  technicalQuestionLength: number
-  behavioralQuestionLength: number
-  day: number
+  company: string;
+  technicalQuestionLength: number;
+  behavioralQuestionLength: number;
+  day: number;
+};
+
+type FeedbackCardProps = {
+  icon: Reactnode;
+  headline: string;
+  title: string;
+  description: string;
 };
