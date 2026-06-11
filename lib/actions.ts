@@ -209,7 +209,7 @@ export const generateInterview = async (
     .trim();
   const report = JSON.parse(clean);
 
-  await prisma.interviewReport.create({
+  const feedback = await prisma.interviewReport.create({
     data: {
       profileId,
       jobDescription,
@@ -262,5 +262,5 @@ export const generateInterview = async (
     },
   });
 
-  return { success: true, message: "Interview report generated successfully" };
+  return feedback.id;
 };

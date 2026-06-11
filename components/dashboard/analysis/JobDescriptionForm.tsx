@@ -49,19 +49,20 @@ const JobDescriptionForm = ({
         const text = await pdfToText(blob);
 
         const jobDescription = `
-      ${values.jobTitle}
-      ${values.company}
-      ${values.location}
+    ${values.jobTitle}
+    ${values.company}
+    ${values.location}
 
-      ${values.jobDescription}
-      `;
+    ${values.jobDescription}
+    `;
 
-        await generateInterview(profileId, text, jobDescription);
+        const id = await generateInterview(profileId, text, jobDescription);
+        return id;
       },
       {
         loading: "Generating your interview report...",
-        success: () => {
-          router.push("/feedback");
+        success: (id) => {
+          router.push(`/feedback/${id}`);
           return "Interview report generated successfully!";
         },
         error: "Failed to generate interview report. Please try again.",
