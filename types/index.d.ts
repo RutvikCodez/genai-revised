@@ -294,23 +294,22 @@ type InfoRowProps = {
   children: React.ReactNode;
 };
 
-
 type MetaItemProps = {
   icon: LucideIcon;
   children: React.ReactNode;
-}
+};
 
 type DateRangeProps = {
   startDate: Date;
   endDate?: Date | null | undefined;
   currentlyWorking?: boolean;
-}
+};
 
 type DataRowProps = {
-  label?: string;           
-  icon?: React.ElementType; 
+  label?: string;
+  icon?: React.ElementType;
   children: React.ReactNode;
-  justify?: boolean;        
+  justify?: boolean;
 };
 
 type InfoField = {
@@ -341,7 +340,7 @@ type TitleProps = {
   title: string;
   description: string;
   children: React.ReactNode;
-}
+};
 
 type InterviewReport = {
   title: string;
@@ -366,4 +365,13 @@ type InterviewReport = {
     focus: string;
     tasks: string[];
   }[];
+};
+
+type ScoreCardProps = {
+  matchScore: number;
+  jobTitle: string;
+  company: string
+  technicalQuestionLength: number
+  behavioralQuestionLength: number
+  day: number
 };

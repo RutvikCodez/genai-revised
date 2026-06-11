@@ -1,3 +1,4 @@
+import { ChartConfig } from "@/components/ui/chart";
 import {
   Award,
   Brain,
@@ -485,3 +486,14 @@ export const JobDescriptionFields = [
     icon: MapPin,
   },
 ];
+
+export const chartConfig = {
+  score: {
+    label: "Match Score",
+    color: "var(--chart-1)",
+  },
+  remaining: {
+    label: "Remaining",
+    color: "var(--muted)",
+  },
+} satisfies ChartConfig;
