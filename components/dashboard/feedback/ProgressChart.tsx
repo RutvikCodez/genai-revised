@@ -5,63 +5,103 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { chartConfig } from "@/constants";
 
-export default function ProgressChart({ matchScore }: { matchScore: number }) {
+export default function ProgressChart({
+  matchScore,
+}: {
+  matchScore: number;
+}) {
+  const safeScore = Math.min(100, Math.max(0, matchScore));
+  const remaining = 100 - safeScore;
+
   const chartData = [
     {
       name: "match",
-      value: matchScore,
+      value: safeScore,
       fill: "var(--chart-1)",
     },
     {
       name: "remaining",
-      value: 100 - matchScore,
+      value: remaining,
       fill: "var(--muted)",
     },
   ];
+
+  const getLabel = (score: number) => {
+    if (score >= 85) return "Excellent";
+    if (score >= 70) return "Strong";
+    if (score >= 50) return "Moderate";
+    return "Low";
+  };
+
   return (
-    <ChartContainer config={chartConfig} className="w-55 h-55 mx-auto">
-      <PieChart>
-        <ChartTooltip
-          cursor={false}
-          content={<ChartTooltipContent hideLabel />}
-        />
-        <Pie
-          data={chartData}
-          dataKey="value"
-          innerRadius={60}
-          outerRadius={100}
-          paddingAngle={3}
-          cornerRadius={6}
-          isAnimationActive
-          animationDuration={1500}
-          animationEasing="ease-out"
-        >
-          <Label
-            content={({ viewBox }) => {
-              if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                return (
-                  <text
-                    x={viewBox.cx}
-                    y={viewBox.cy}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                  >
-                    <tspan
+    <div className="relative">
+      <ChartContainer
+        config={{}}
+        className="h-56 w-56"
+      >
+        <PieChart>
+          <ChartTooltip
+            cursor={false}
+            content={
+              <ChartTooltipContent hideLabel />
+            }
+          />
+
+          <Pie
+            data={chartData}
+            dataKey="value"
+            innerRadius={70}
+            outerRadius={95}
+            paddingAngle={4}
+            cornerRadius={8}
+            isAnimationActive
+            animationDuration={1200}
+            animationEasing="ease-out"
+          >
+            <Label
+              content={({ viewBox }) => {
+                if (
+                  viewBox &&
+                  "cx" in viewBox &&
+                  "cy" in viewBox
+                ) {
+                  return (
+                    <text
                       x={viewBox.cx}
                       y={viewBox.cy}
-                      className="fill-foreground text-3xl font-bold"
+                      textAnchor="middle"
+                      dominantBaseline="middle"
                     >
-                      {matchScore}%
-                    </tspan>
-                  </text>
-                );
-              }
-            }}
-          />
-        </Pie>
-      </PieChart>
-    </ChartContainer>
+                      {/* Score */}
+                      <tspan
+                        x={viewBox.cx}
+                        y={(viewBox.cy as number) - 8}
+                        className="fill-foreground text-3xl font-bold"
+                      >
+                        {safeScore}%
+                      </tspan>
+
+                      {/* Label */}
+                      <tspan
+                        x={viewBox.cx}
+                        y={(viewBox.cy as number) + 16}
+                        className="fill-muted-foreground text-xs"
+                      >
+                        {getLabel(safeScore)} Match
+                      </tspan>
+                    </text>
+                  );
+                }
+                return null;
+              }}
+            />
+          </Pie>
+        </PieChart>
+      </ChartContainer>
+
+      {/* subtle outer glow ring effect */}
+      <div className="absolute inset-0 rounded-full border border-border/40" />
+    </div>
   );
 }

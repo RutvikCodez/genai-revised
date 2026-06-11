@@ -15,24 +15,40 @@ const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
     },
   });
   if (!feedback) return;
-  console.log(feedback.jobDescription);
+  const lines = feedback.jobDescription?.split("\n").filter(Boolean) || [];
+  const company = lines[1] || "";
+
+  const {
+    title,
+    matchScore,
+    behavioralQuestions,
+    technicalQuestions,
+    preparationDays,
+  } = feedback;
+
 
   return (
-    <div>
-      <ScoreCard
-        jobTitle={feedback.title}
-        matchScore={feedback.matchScore}
-        company={
-          feedback.jobDescription
-            ?.split("\n")
-            .map((line) => line.trim())
-            .filter(Boolean)[1] || ""
-        }
-        behavioralQuestionLength={feedback.behavioralQuestions.length}
-        technicalQuestionLength={feedback.technicalQuestions.length}
-        day={feedback.preparationDays.length}
+    <main className="mx-auto max-w-6xl flex flex-col gap-10 p-6 md:p-10 w-full">
+      {/* Header */}
+      <header className="flex flex-col gap-2">
+        <h1 className="text-2xl font-semibold tracking-tight">
+          Interview Preparation Report
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          Personalized insights and practice questions for{" "}
+          <span className="text-foreground font-medium">{feedback.title}</span>
+        </p>
+      </header>
+
+       <ScoreCard
+        jobTitle={title}
+        matchScore={matchScore}
+        company={company}
+        behavioralQuestionLength={behavioralQuestions.length}
+        technicalQuestionLength={technicalQuestions.length}
+        day={preparationDays.length}
       />
-    </div>
+    </main>
   );
 };
 
