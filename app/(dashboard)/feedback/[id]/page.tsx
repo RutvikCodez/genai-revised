@@ -1,5 +1,4 @@
 import FeedbackcardWrapper from "@/components/dashboard/feedback/FeedbackcardWrapper";
-import FeedbackTabs from "@/components/dashboard/feedback/FeedbackTabs";
 import ScoreCard from "@/components/dashboard/feedback/ScoreCard";
 import TabsWrapper from "@/components/dashboard/feedback/TabsWrapper";
 import { formatSkillGaps } from "@/lib/formatSkillGaps";
@@ -75,7 +74,7 @@ const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
         totalquestion={String(totalQuestions)}
       />
 
-      <TabsWrapper />
+      <TabsWrapper technicalQuestions={technicalQuestions} />
     </main>
   );
 };

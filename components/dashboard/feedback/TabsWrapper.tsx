@@ -1,27 +1,14 @@
-import {
-  BarChart3,
-  FileText,
-  LayoutDashboard,
-  Settings,
-} from "lucide-react";
 import FeedbackTabs from "./FeedbackTabs";
+import TechnicalTab from "./TechnicalTab";
 
-const TabsWrapper = () => {
+const TabsWrapper = ({ technicalQuestions }: TabsWrapperProps) => {
   const feedbackTabsData = [
     {
-      title: "Overview",
-      icon: LayoutDashboard,
-      element: (
-        <div>
-          You have <b>12 active projects</b> and <b>3 pending tasks</b>.
-          <br />
-          Overall progress is <b>good 🚀</b>.
-        </div>
-      ),
+      title: "Technical",
+      element: <TechnicalTab technicalQuestions={technicalQuestions} />,
     },
     {
-      title: "Analytics",
-      icon: BarChart3,
+      title: "Behavioral",
       element: (
         <div>
           Page views increased by <b>25%</b> compared to last month.
@@ -31,8 +18,7 @@ const TabsWrapper = () => {
       ),
     },
     {
-      title: "Reports",
-      icon: FileText,
+      title: "Skill gaps",
       element: (
         <div>
           You have <b>5 reports</b> ready for export.
@@ -42,8 +28,7 @@ const TabsWrapper = () => {
       ),
     },
     {
-      title: "Settings",
-      icon: Settings,
+      title: "Prep Plan",
       element: (
         <div>
           Manage notifications, security, and theme preferences.

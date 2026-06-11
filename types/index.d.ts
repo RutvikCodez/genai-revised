@@ -395,7 +395,19 @@ type FeedbacCardWapperProps = {
 }
 
 type FeedbackTabsProps = {
-   icon: Reactnode;
    title: string
    element: JSX.Element
+}
+
+type TechnicalQuestionsProps = {
+    id: string;
+    order: number;
+    reportId: string;
+    question: string;
+    intention: string;
+    answer: string;
+}
+
+type TabsWrapperProps = {
+  technicalQuestions: TechnicalQuestionsProps[]
 }
