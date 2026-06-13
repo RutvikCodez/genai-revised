@@ -19,6 +19,7 @@ const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
     },
   });
   if (!feedback) return;
+  
   const lines = feedback.jobDescription?.split("\n").filter(Boolean) || [];
   const company = lines[1] || "";
 
@@ -80,6 +81,7 @@ const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
         skillGaps={skillGaps}
         preparationDays={preparationDays}
       />
+      
     </main>
   );
 };
