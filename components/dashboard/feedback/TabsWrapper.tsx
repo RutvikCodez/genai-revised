@@ -1,11 +1,13 @@
 import FeedbackTabs from "./FeedbackTabs";
+import PrepPlanTab from "./PrepPlanTab";
 import SkillGapTab from "./SkillGapTab";
 import TechnicalTab from "./TechnicalTab";
 
 const TabsWrapper = ({
   technicalQuestions,
   behavioralQuestions,
-  skillGaps
+  skillGaps,
+  preparationDays
 }: TabsWrapperProps) => {
   const feedbackTabsData = [
     {
@@ -22,13 +24,7 @@ const TabsWrapper = ({
     },
     {
       title: "Prep Plan",
-      element: (
-        <div>
-          Manage notifications, security, and theme preferences.
-          <br />
-          Current theme: <b>Dark Mode 🌙</b>.
-        </div>
-      ),
+      element: <PrepPlanTab preparationDays={preparationDays} />,
     },
   ];
   return <FeedbackTabs feedback={feedbackTabsData} />;

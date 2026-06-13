@@ -425,8 +425,17 @@ type SkillGapsProps = {
     impact: string | null;
 }
 
+type PreparationDaysProps = {
+    id: string;
+    reportId: string;
+    day: number;
+    focus: string;
+    tasks: string[];
+}
+
 type TabsWrapperProps = {
   technicalQuestions: TechnicalQuestionsProps[]
   behavioralQuestions: BehavioralQuestionsProps[]
   skillGaps: SkillGapsProps[]
+  preparationDays: PreparationDaysProps[]
 }

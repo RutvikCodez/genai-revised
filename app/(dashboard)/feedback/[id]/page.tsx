@@ -74,7 +74,12 @@ const Feedback = async ({ params }: { params: Promise<{ id: string }> }) => {
         totalquestion={String(totalQuestions)}
       />
 
-      <TabsWrapper technicalQuestions={technicalQuestions} behavioralQuestions={behavioralQuestions} skillGaps={skillGaps} />
+      <TabsWrapper
+        technicalQuestions={technicalQuestions}
+        behavioralQuestions={behavioralQuestions}
+        skillGaps={skillGaps}
+        preparationDays={preparationDays}
+      />
     </main>
   );
 };
