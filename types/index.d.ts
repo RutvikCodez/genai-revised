@@ -408,6 +408,25 @@ type TechnicalQuestionsProps = {
     answer: string;
 }
 
+type BehavioralQuestionsProps = {
+    id: string;
+    reportId: string;
+    question: string;
+    intention: string;
+    answer: string;
+    order: number;
+}
+
+type SkillGapsProps = {
+    id: string;
+    reportId: string;
+    skill: string;
+    severity: SkillGapSeverity;
+    impact: string | null;
+}
+
 type TabsWrapperProps = {
   technicalQuestions: TechnicalQuestionsProps[]
+  behavioralQuestions: BehavioralQuestionsProps[]
+  skillGaps: SkillGapsProps[]
 }

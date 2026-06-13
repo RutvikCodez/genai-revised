@@ -1,7 +1,12 @@
 import FeedbackTabs from "./FeedbackTabs";
+import SkillGapTab from "./SkillGapTab";
 import TechnicalTab from "./TechnicalTab";
 
-const TabsWrapper = ({ technicalQuestions }: TabsWrapperProps) => {
+const TabsWrapper = ({
+  technicalQuestions,
+  behavioralQuestions,
+  skillGaps
+}: TabsWrapperProps) => {
   const feedbackTabsData = [
     {
       title: "Technical",
@@ -9,23 +14,11 @@ const TabsWrapper = ({ technicalQuestions }: TabsWrapperProps) => {
     },
     {
       title: "Behavioral",
-      element: (
-        <div>
-          Page views increased by <b>25%</b> compared to last month.
-          <br />
-          Engagement rate is <b>high 🔥</b>.
-        </div>
-      ),
+      element: <TechnicalTab technicalQuestions={behavioralQuestions} />,
     },
     {
       title: "Skill gaps",
-      element: (
-        <div>
-          You have <b>5 reports</b> ready for export.
-          <br />
-          Most recent report: <b>Interview Analysis #12</b>.
-        </div>
-      ),
+      element: <SkillGapTab skillGaps={skillGaps} />,
     },
     {
       title: "Prep Plan",
