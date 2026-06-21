@@ -104,6 +104,22 @@ export const requireProfile = async (options?: {
   };
 };
 
+
+export const getSessionProfile = async () => {
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return { session: null, profile: null };
+  }
+
+  const profile = await prisma.candidateProfile.findUnique({
+    where: { userId: session.user.id },
+    select: { id: true },
+  });
+
+  return { session, profile };
+};
+
 const buildInterviewPrompt = (resume: string, jobDescription: string) => `
 You are an expert interview coach and career strategist with deep knowledge of hiring practices across industries.
 
